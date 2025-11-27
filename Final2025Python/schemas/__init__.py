@@ -1,6 +1,5 @@
 from schemas.address_schema import AddressSchema
 from schemas.bill_schema import BillSchema
-from schemas.category_schema import CategorySchema
 from schemas.client_schema import ClientSchema
 from schemas.order_detail_schema import OrderDetailSchema
 from schemas.order_schema import OrderSchema
