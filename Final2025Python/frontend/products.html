@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productos - TechStore</title>
+
+  <!-- Global + Page CSS -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="index.html" class="logo">🛒 <span>TechStore</span></a>
+
+        <div class="navbar-menu">
+          <a href="products.html" class="nav-link active">Productos</a>
+
+          <button class="btn-icon" id="btnCartNav" title="Carrito">
+            🛒 <span class="badge" id="cartBadge">0</span>
+          </button>
+
+          <button class="btn-icon" id="btnLoginNav" title="Iniciar Sesión">
+            👤 Cuenta
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Todos los Productos</h1>
+      <p class="small">Encuentra exactamente lo que necesitas</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-products">
+    <div class="container">
+      <!-- Search and Filters Bar -->
+      <div class="filters-bar">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input" />
+          <button class="btn btn-primary btn-search" id="btnSearch">🔍</button>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-ghost btn-filter" id="btnShowFilters">⚙️ Filtros</button>
+          <select class="select-filter" id="sortSelect">
+            <option value="default">Ordenar por</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+            <option value="name-asc">Nombre: A-Z</option>
+            <option value="name-desc">Nombre: Z-A</option>
+            <option value="stock">Mayor Stock</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-layout">
+        <!-- Sidebar with Categories -->
+        <aside class="sidebar card" id="sidebar">
+          <div class="sidebar-header">
+            <h3>Categorías</h3>
+            <button class="btn-icon" id="btnCloseSidebar">✕</button>
+          </div>
+
+          <div class="categories" id="categoriesList">
+            <button class="category-btn btn-ghost active" data-category="all">📦 Todos los productos</button>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="small">Precio</h3>
+            <div class="price-filter row">
+              <input type="number" id="minPrice" placeholder="Mín" class="price-input" />
+              <span class="small">-</span>
+              <input type="number" id="maxPrice" placeholder="Máx" class="price-input" />
+              <button class="btn btn-primary btn-small" id="btnApplyPrice">Aplicar</button>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="small">Disponibilidad</h3>
+            <label class="checkbox-label small">
+              <input type="checkbox" id="inStockOnly" /> Solo en stock
+            </label>
+          </div>
+
+          <button class="btn btn-ghost btn-block" id="btnClearFilters">Limpiar Filtros</button>
+        </aside>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+          <div class="products-info">
+            <h2 id="sectionTitle">Todos los productos</h2>
+            <span class="products-count small" id="productsCount">0 productos</span>
+          </div>
+
+          <div class="loading" id="loading">Cargando productos...</div>
+
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here by JavaScript -->
+          </div>
+
+          <div class="no-products" id="noProducts" style="display:none;">😔 No se encontraron productos con los filtros seleccionados.</div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom small">
+        <p>&copy; 2025 TechStore. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h2>🛒 Tu Carrito</h2>
+        <button class="modal-close btn-icon" id="closeCart">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-empty small" id="cartEmpty" style="display:none;">Tu carrito está vacío. ¡Agrega productos para comenzar!</div>
+      </div>
+
+      <div class="modal-footer row" style="margin-top:12px; align-items:center;">
+        <div class="cart-total col"><h3>Total: $<span id="cartTotal">0.00</span></h3></div>
+        <div class="col" style="display:flex;justify-content:flex-end">
+          <button class="btn btn-primary" id="btnCheckout">Proceder al Pago</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout / Success / Login modals same structure as index (reuse) -->
+  <!-- Login Modal (same as index) -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h2>👤 Iniciar Sesión</h2>
+        <button class="modal-close btn-icon" id="closeLogin">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm" class="auth-form">
+          <div class="form-group"><label class="small">Email</label><input type="email" required></div>
+          <div class="form-group"><label class="small">Contraseña</label><input type="password" required></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Iniciar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

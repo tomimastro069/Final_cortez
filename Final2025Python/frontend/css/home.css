@@ -1,0 +1,116 @@
+/* home.css - específico para index.html (importa global.css first) */
+
+/* Hero */
+.hero-home{
+  padding:36px 0;
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+/* decorative gradient / image background */
+.hero-home .hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(800px 300px at 10% 20%, rgba(58,109,255,0.06), transparent 10%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  pointer-events:none;
+}
+
+/* content */
+.hero-content{
+  position:relative;
+  padding:28px 0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:flex-start;
+  max-width:720px;
+}
+
+/* titles */
+.hero-title{
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--text);
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle{ font-size:1rem; color:var(--muted) }
+.hero-description{ color:var(--muted); font-size:0.95rem }
+
+/* search bar hero */
+.search-bar-hero{
+  width:100%;
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+}
+
+.search-input-hero{
+  flex:1;
+  min-width:0;
+}
+
+.btn-search-hero{
+  white-space:nowrap;
+}
+
+/* hero actions */
+.hero-actions{ display:flex; gap:12px; margin-top:12px }
+
+/* categories grid */
+.categories-home{ padding:20px 0 10px 0 }
+
+.categories-grid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px;
+}
+
+/* featured carousel */
+.featured-products .products-carousel{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:10px 0;
+  margin-top:12px;
+}
+.products-carousel .card{
+  min-width:220px;
+  width:220px;
+  flex:0 0 auto;
+}
+
+/* benefits */
+.benefits{
+  margin-top:18px;
+  padding:18px 0 36px 0;
+}
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:12px;
+}
+.benefit-card{ text-align:center }
+
+/* footer tweaks */
+.footer{ padding:22px 0; margin-top:30px }
+
+/* ---- Responsiveness ---- */
+@media (min-width:720px){
+  .hero-home{ padding:48px 0 }
+  .hero-content{ padding-left:10px }
+  .hero-title{ font-size:2.6rem }
+  .categories-grid{ grid-template-columns: repeat(4, 1fr) }
+  .benefits-grid{ grid-template-columns: repeat(4, 1fr) }
+}
+
+@media (min-width:992px){
+  .hero-content{ max-width:900px }
+  .products-carousel .card{ min-width:260px; width:260px }
+}

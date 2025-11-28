@@ -1,0 +1,64 @@
+/* ---------- CART MODAL IMPROVED ---------- */
+#cartModal .modal-content {
+  max-width: 520px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 0 25px rgba(0,0,0,0.15);
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f8;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.cart-item-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  background: #ececec;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.qty-btn:hover {
+  background: #d8d8d8;
+}
+
+.remove-item {
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.cart-total {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: right;
+}

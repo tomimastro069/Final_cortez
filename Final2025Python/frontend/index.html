@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechStore - Encuentra todo lo que necesitas</title>
+
+  <!-- Global + Page CSS -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="index.html" class="logo">🛒 <span>TechStore</span></a>
+
+        <div class="navbar-menu">
+          <a href="products.html" class="nav-link">Productos</a>
+
+          <button class="btn-icon" id="btnCartNav" title="Carrito">
+            🛒 <span class="badge" id="cartBadge">0</span>
+          </button>
+
+          <button class="btn-icon" id="btnLoginNav" title="Iniciar Sesión">
+            👤 Cuenta
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-home">
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-content card">
+        <h1 class="hero-title">Bienvenido a TechStore</h1>
+        <p class="hero-subtitle">Tu tienda online de confianza</p>
+
+        <p class="hero-description">
+          Encuentra los mejores productos en tecnología, moda, hogar y más.
+          <br />Calidad garantizada y envío rápido a todo el país.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-bar-hero">
+          <input type="text" id="heroSearch" placeholder="¿Qué estás buscando? (ej: laptop, camisa, cafetera...)" class="search-input-hero" />
+          <button class="btn btn-primary btn-search-hero" id="btnHeroSearch">🔍 Buscar</button>
+        </div>
+
+        <div class="hero-actions">
+          <a href="products.html" class="btn btn-primary btn-hero-primary">Ver Todos los Productos</a>
+          <a href="#categories" class="btn btn-ghost btn-hero-secondary">Explorar Categorías</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Preview -->
+  <section class="categories-home" id="categories">
+    <div class="container">
+      <h2 class="section-title">Nuestras Categorías</h2>
+      <p class="section-subtitle">Explora nuestra amplia variedad de productos</p>
+
+      <div class="categories-grid" id="categoriesPreview">
+        <!-- Example category cards - reemplazá con JS dinámico -->
+        <div class="card">
+          <h3 class="small">Electrónica</h3>
+        </div>
+        <div class="card">
+          <h3 class="small">Ropa</h3>
+        </div>
+        <div class="card">
+          <h3 class="small">Hogar</h3>
+        </div>
+        <div class="card">
+          <h3 class="small">Accesorios</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <div class="container">
+      <h2 class="section-title">Productos Destacados</h2>
+      <p class="section-subtitle">Los más vendidos de la semana</p>
+
+      <div class="products-carousel" id="featuredProducts">
+        <!-- Ejemplos: serán tarjetas .card -->
+        <div class="card">
+          <img src="images/placeholder.svg" alt="producto" class="img-cover" />
+          <h4 class="small">Auriculares inalámbricos</h4>
+          <p class="small">desde $2999</p>
+        </div>
+
+        <div class="card">
+          <img src="images/placeholder.svg" alt="producto" class="img-cover" />
+          <h4 class="small">Smartwatch</h4>
+          <p class="small">desde $7999</p>
+        </div>
+
+        <div class="card">
+          <img src="images/placeholder.svg" alt="producto" class="img-cover" />
+          <h4 class="small">Cafetera</h4>
+          <p class="small">desde $4599</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-card card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Envío Gratis</h3>
+          <p>En compras mayores a $500</p>
+        </div>
+
+        <div class="benefit-card card">
+          <div class="benefit-icon">💳</div>
+          <h3>Pago Seguro</h3>
+          <p>Múltiples métodos de pago</p>
+        </div>
+
+        <div class="benefit-card card">
+          <div class="benefit-icon">🔄</div>
+          <h3>Devoluciones</h3>
+          <p>30 días para devoluciones</p>
+        </div>
+
+        <div class="benefit-card card">
+          <div class="benefit-icon">⭐</div>
+          <h3>Calidad</h3>
+          <p>Productos 100% originales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content row">
+        <div class="footer-section col card">
+          <h4>TechStore</h4>
+          <p class="small">Tu tienda online de confianza desde 2025</p>
+        </div>
+
+        <div class="footer-section col card">
+          <h4>Enlaces Rápidos</h4>
+          <ul class="small">
+            <li><a href="products.html" class="nav-link">Productos</a></li>
+            <li><a href="#categories" class="nav-link">Categorías</a></li>
+            <li><a href="#" class="nav-link">Sobre Nosotros</a></li>
+            <li><a href="#" class="nav-link">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section col card">
+          <h4>Atención al Cliente</h4>
+          <ul class="small">
+            <li><a href="#" class="nav-link">Preguntas Frecuentes</a></li>
+            <li><a href="#" class="nav-link">Envíos</a></li>
+            <li><a href="#" class="nav-link">Devoluciones</a></li>
+            <li><a href="#" class="nav-link">Términos y Condiciones</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section col card">
+          <h4>Síguenos</h4>
+          <div class="social-links small">
+            <a href="#" class="nav-link">📘 Facebook</a><br/>
+            <a href="#" class="nav-link">📷 Instagram</a><br/>
+            <a href="#" class="nav-link">🐦 Twitter</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom small">
+        <p>&copy; 2025 TechStore. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h2>🛒 Tu Carrito</h2>
+        <button class="modal-close btn-icon" id="closeCart">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-empty small" id="cartEmpty" style="display:none;">Tu carrito está vacío. ¡Agrega productos!</div>
+      </div>
+
+      <div class="modal-footer row" style="margin-top:12px; align-items:center;">
+        <div class="cart-total col">
+          <h3>Total: $<span id="cartTotal">0.00</span></h3>
+        </div>
+        <div class="col" style="display:flex; justify-content:flex-end;">
+          <button class="btn btn-primary" id="btnCheckout">Proceder al Pago</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h2>👤 Iniciar Sesión</h2>
+        <button class="modal-close btn-icon" id="closeLogin">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="auth-tabs row">
+          <button class="auth-tab btn-ghost active" data-tab="login">Iniciar Sesión</button>
+          <button class="auth-tab btn-ghost" data-tab="register">Registrarse</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label class="small">Email</label>
+            <input type="email" required placeholder="tu@email.com"/>
+          </div>
+
+          <div class="form-group">
+            <label class="small">Contraseña</label>
+            <input type="password" required placeholder="••••••••"/>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Iniciar Sesión</button>
+          <p class="auth-note small">Nota: Esta es una demostración. El login no está implementado.</p>
+        </form>
+
+        <!-- Register Form (oculto - se muestra con JS) -->
+        <form id="registerForm" class="auth-form" style="display:none;">
+          <div class="form-group"><label class="small">Nombre</label><input/></div>
+          <div class="form-group"><label class="small">Apellido</label><input/></div>
+          <div class="form-group"><label class="small">Email</label><input/></div>
+          <div class="form-group"><label class="small">Teléfono</label><input/></div>
+          <div class="form-group"><label class="small">Contraseña</label><input type="password"/></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Crear Cuenta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

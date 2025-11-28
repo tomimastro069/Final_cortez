@@ -4,6 +4,21 @@ Main application module for FastAPI e-commerce REST API.
 This module initializes the FastAPI application, registers all routers,
 and configures global exception handlers.
 """
+# Setup centralized logging FIRST
+setup_logging()
+logger = logging.getLogger(__name__)
+
+# Import schemas BEFORE any controllers
+import schemas
+
+from controllers.address_controller import AddressController
+from controllers.bill_controller import BillController
+from controllers.category_controller import CategoryController
+from controllers.client_controller import ClientController
+from controllers.order_controller import OrderController
+from controllers.order_detail_controller import OrderDetailController
+from controllers.product_controller import ProductController
+from controllers.review_controller import ReviewController
 import os
 import uvicorn
 import logging
@@ -85,22 +100,27 @@ def create_fastapi_app() -> FastAPI:
     fastapi_app.include_router(health_check_controller, prefix="/health_check")
 
     # Add middleware (LIFO order - last added runs first)
-    # Request ID middleware runs FIRST (innermost) to capture all logs
-    fastapi_app.add_middleware(RequestIDMiddleware)
-    logger.info("✅ Request ID middleware enabled (distributed tracing)")
-
-    # CORS Configuration
-    cors_origins = os.getenv("CORS_ORIGINS", "*").split(",")
+    # CORS must be the FIRST middleware to handle OPTIONS requests
+    # and to add headers to all responses, including errors.
+    origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ]
     fastapi_app.add_middleware(
         CORSMiddleware,
-        allow_origins=cors_origins if cors_origins != ["*"] else ["*"],
+        allow_origins=origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    logger.info(f"✅ CORS enabled for origins: {cors_origins}")
+    logger.info(f"✅ CORS enabled for origins: {origins}")
 
-    # Rate limiting: 100 requests per 60 seconds per IP (configurable via env)
+    # Request ID middleware runs after CORS to capture all logs
+    fastapi_app.add_middleware(RequestIDMiddleware)
+    logger.info("✅ Request ID middleware enabled (distributed tracing)")
+
+    # Rate limiting runs after CORS and Request ID
     fastapi_app.add_middleware(RateLimiterMiddleware, calls=100, period=60)
     logger.info("✅ Rate limiting enabled: 100 requests/60s per IP")
 
