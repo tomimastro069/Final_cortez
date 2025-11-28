@@ -10,28 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function fetchAndDisplayProducts() {
-    showLoading(true);
+  showLoading(true);
 
-    try {
-      const resp = await fetch('/api/products');
-      if (!resp.ok) throw new Error('Network response not ok: ' + resp.status);
-      const products = await resp.json();
+  try {
+    const query = buildQueryParams();
+    const url = query ? `/api/products/filter?${query}` : `/api/products`;
 
-      // some backends return id_key instead of id — normalize
-      const normalized = Array.isArray(products) ? products.map(p => ({
-        id: p.id ?? p.id_key,
-        name: p.name,
-        price: Number(p.price)
-      })) : [];
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error("Error en la API: " + resp.status);
 
-      displayProducts(normalized);
-    } catch (err) {
-      console.error('Error fetching products:', err);
-      showNoProducts(true);
-    } finally {
-      showLoading(false);
-    }
+    const products = await resp.json();
+
+    const normalized = products.map(p => ({
+      id: p.id ?? p.id_key,
+      name: p.name,
+      price: Number(p.price),
+      stock: p.stock
+    }));
+
+    displayProducts(normalized);
+
+  } catch (err) {
+    console.error("Error filtrando productos:", err);
+    showNoProducts(true);
+  } finally {
+    showLoading(false);
   }
+}
+
 
   function displayProducts(products) {
     productsGrid.innerHTML = '';
@@ -124,7 +130,74 @@ document.addEventListener('DOMContentLoaded', () => {
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#39;');
   }
+function buildQueryParams() {
+  const search = document.getElementById("searchInput").value.trim();
+  const category = document.querySelector(".category-btn.active")?.dataset.category;
+  const minPrice = document.getElementById("minPrice").value;
+  const maxPrice = document.getElementById("maxPrice").value;
+  const inStock = document.getElementById("inStockOnly").checked;
+  const sort = document.getElementById("sortSelect").value;
 
+  const params = new URLSearchParams();
+
+  if (search) params.append("search", search);
+
+  if (category && category !== "all") {
+    params.append("category_id", parseInt(category));
+  }
+
+  if (minPrice !== "" && !isNaN(minPrice)) {
+    params.append("min_price", parseFloat(minPrice));
+  }
+
+  if (maxPrice !== "" && !isNaN(maxPrice)) {
+    params.append("max_price", parseFloat(maxPrice));
+  }
+
+  if (inStock) params.append("in_stock_only", "true");
+
+  if (sort !== "default") {
+    params.append("sort_by", sort); 
+  }
+
+  return params.toString();
+}
+
+function setupFilters() {
+  document.getElementById("btnSearch").addEventListener("click", fetchAndDisplayProducts);
+
+  document.getElementById("searchInput").addEventListener("keyup", (e) => {
+    if (e.key === "Enter") fetchAndDisplayProducts();
+  });
+
+  document.getElementById("btnApplyPrice").addEventListener("click", fetchAndDisplayProducts);
+
+  document.getElementById("inStockOnly").addEventListener("change", fetchAndDisplayProducts);
+
+  document.getElementById("sortSelect").addEventListener("change", fetchAndDisplayProducts);
+
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      fetchAndDisplayProducts();
+    });
+  });
+
+  document.getElementById("btnClearFilters").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("minPrice").value = "";
+    document.getElementById("maxPrice").value = "";
+    document.getElementById("inStockOnly").checked = false;
+    document.getElementById("sortSelect").value = "default";
+
+    document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+    document.querySelector('[data-category="all"]').classList.add("active");
+
+    fetchAndDisplayProducts();
+  });
+}
+setupFilters();
   // initial load
   fetchAndDisplayProducts();
 });

@@ -166,9 +166,72 @@ class ProductService(BaseServiceImpl):
         # Invalidate list cache
         self._invalidate_list_cache()
 
+    def filter_products(
+        self,
+        search: Optional[str] = None,
+        category_id: Optional[int] = None,
+        min_price: Optional[float] = None,
+        max_price: Optional[float] = None,
+        in_stock_only: bool = False,
+        sort_by: Optional[str] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[ProductSchema]:
+        """
+        Filter products with caching support.
+
+        Cache key pattern: products:filter:search:{search}:category:{category_id}:min_price:{min_price}:max_price:{max_price}:in_stock:{in_stock_only}:sort:{sort_by}:skip:{skip}:limit:{limit}
+        TTL: 5 minutes
+        """
+        # Build cache key with all filter parameters
+        cache_key = self.cache.build_key(
+            self.cache_prefix,
+            "filter",
+            search=search or "",
+            category_id=category_id or "",
+            min_price=min_price or "",
+            max_price=max_price or "",
+            in_stock_only=str(in_stock_only),
+            sort_by=sort_by or "",
+            skip=skip,
+            limit=limit
+        )
+
+        # Try cache first
+        cached_products = self.cache.get(cache_key)
+        if cached_products is not None:
+            logger.debug(f"Cache HIT: {cache_key}")
+            return [ProductSchema(**p) for p in cached_products]
+
+        # Cache miss - filter from database
+        logger.debug(f"Cache MISS: {cache_key}")
+        products = self._repository.filter_products(
+            search=search,
+            category_id=category_id,
+            min_price=min_price,
+            max_price=max_price,
+            in_stock_only=in_stock_only,
+            sort_by=sort_by,
+            skip=skip,
+            limit=limit
+        )
+
+        # Cache the result
+        products_dict = [p.model_dump() for p in products]
+        self.cache.set(cache_key, products_dict)
+
+        return products
+
     def _invalidate_list_cache(self):
         """Invalidate all product list caches"""
         pattern = f"{self.cache_prefix}:list:*"
         deleted_count = self.cache.delete_pattern(pattern)
         if deleted_count > 0:
             logger.info(f"Invalidated {deleted_count} product list cache entries")
+
+    def _invalidate_filter_cache(self):
+        """Invalidate all product filter caches"""
+        pattern = f"{self.cache_prefix}:filter:*"
+        deleted_count = self.cache.delete_pattern(pattern)
+        if deleted_count > 0:
+            logger.info(f"Invalidated {deleted_count} product filter cache entries")

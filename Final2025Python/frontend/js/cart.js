@@ -106,6 +106,9 @@ function showCart() {
 
   if (!modal || !cartItems || !cartEmpty || !cartTotal) return;
 
+  // Preserve scroll position
+  const scrollTop = cartItems.scrollTop;
+
   if (cart.length === 0) {
     cartItems.innerHTML = '';
     cartEmpty.style.display = 'block';
@@ -154,6 +157,11 @@ function showCart() {
   }
 
   modal.style.display = 'flex';
+
+  // Restore scroll position after rendering
+  setTimeout(() => {
+    cartItems.scrollTop = scrollTop;
+  }, 0);
 }
 
 // Hide cart modal
