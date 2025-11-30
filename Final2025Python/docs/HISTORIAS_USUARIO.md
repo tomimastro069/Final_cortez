@@ -173,6 +173,31 @@
 
 ---
 
+### HU-C05: Desactivación de Cuenta de Cliente
+**Como** cliente final
+**Quiero** desactivar o eliminar mi cuenta
+**Para** proteger mi privacidad y eliminar mis datos del sistema
+
+**Criterios de Aceptación**:
+- ✅ El cliente puede solicitar la eliminación de su cuenta a través de un endpoint seguro
+- ✅ El sistema realiza una eliminación lógica (soft delete) cambiando el estado del cliente a "INACTIVO"
+- ✅ Los datos personales del cliente se anonimizan o eliminan
+- ✅ No se puede acceder al sistema con una cuenta desactivada
+- ✅ Retorna HTTP 204 No Content si la operación es exitosa
+- ✅ Retorna HTTP 404 si el cliente no existe
+
+**Endpoint**: `DELETE /clients/{id_key}`
+
+**Reglas de Negocio**:
+- La eliminación debe ser lógica para mantener la integridad de los pedidos históricos asociados al cliente.
+- Se debe cumplir con las normativas de protección de datos (GDPR, LFPDPPP).
+- La acción es irreversible desde la perspectiva del cliente.
+
+**Prioridad**: MEDIA
+**Estimación**: 4 puntos
+
+---
+
 ## Módulo de Productos y Catálogo
 
 ### HU-P01: Búsqueda y Navegación de Productos
@@ -613,9 +638,9 @@ locust -f load_test.py \
 |-----------|---------------------|----------------|
 | **CRÍTICA** | HU-P01, HU-P03, HU-O01, HU-O02, HU-A01 | 28 puntos |
 | **ALTA** | HU-C01, HU-C04, HU-P02, HU-P04, HU-O03, HU-O04, HU-F01, HU-A02 | 26 puntos |
-| **MEDIA** | HU-C02, HU-C03, HU-R01 | 7 puntos |
+| **MEDIA** | HU-C02, HU-C03, HU-R01, HU-C05 | 11 puntos |
 
-**Total**: 61 puntos de historia
+**Total**: 65 puntos de historia
 
 ---
 
@@ -627,6 +652,7 @@ locust -f load_test.py \
 | HU-C02 | GET /clients/{id} | Client | ClientService | test_controllers.py::TestClientController |
 | HU-C03 | PUT /clients/{id} | Client | ClientService | test_services.py::TestClientService |
 | HU-C04 | POST /addresses | Address | AddressService | test_integration.py |
+| HU-C05 | DELETE /clients/{id} | Client | ClientService | test_integration.py::test_delete_client |
 | HU-P01 | GET /products | Product | ProductService | test_services.py::TestProductService |
 | HU-P02 | GET /products/{id} | Product | ProductService | test_controllers.py::TestProductController |
 | HU-P03 | POST/PUT/DELETE /products | Product | ProductService | test_medium_priority_fixes.py::test_prevent_product_deletion |

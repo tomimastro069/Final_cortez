@@ -235,3 +235,7 @@ class ProductService(BaseServiceImpl):
         deleted_count = self.cache.delete_pattern(pattern)
         if deleted_count > 0:
             logger.info(f"Invalidated {deleted_count} product filter cache entries")
+            
+    def get_by_id(self, id_key: int):
+        return self.get_one(id_key)
+

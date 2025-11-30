@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="images/placeholder.svg" alt="${escapeHtml(product.name)}" />
         <div class="product-title">${escapeHtml(product.name)}</div>
         <div class="product-price price">$${price.toFixed(2)}</div>
+        <a href="product-detail.html?id=${product.id ?? product.id_key}" class="btn btn-secondary">Mostrar detalle</a>
         <button class="btn btn-primary btn-add-cart" data-product-id="${product.id ?? product.id_key}">
-
           Agregar al carrito
         </button>
       `;
