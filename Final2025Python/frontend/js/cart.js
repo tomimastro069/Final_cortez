@@ -55,6 +55,7 @@ function addToCart(a, b, c) {
   saveCart();
   showAddToCartAlert(productName);
 }
+
 // Remove item from cart
 function removeFromCart(productId) {
   cart = cart.filter(item => item.id !== productId);
@@ -72,6 +73,15 @@ function updateQuantity(productId, newQuantity) {
   const item = cart.find(item => item.id === productId);
   if (item) {
     item.quantity = newQuantity;
+    saveCart();
+    showCart();
+  }
+}
+
+// Clear entire cart
+function clearCart() {
+  if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+    cart = [];
     saveCart();
     showCart();
   }
@@ -104,7 +114,10 @@ function showCart() {
   const cartEmpty = document.getElementById('cartEmpty');
   const cartTotal = document.getElementById('cartTotal');
 
-  if (!modal || !cartItems || !cartEmpty || !cartTotal) return;
+  if (!modal || !cartItems || !cartEmpty || !cartTotal) {
+    console.error('Cart modal elements not found');
+    return;
+  }
 
   // Preserve scroll position
   const scrollTop = cartItems.scrollTop;
@@ -121,7 +134,7 @@ function showCart() {
       <div class="cart-item">
         <div class="cart-item-info">
           <h4>${escapeHtml(item.name)}</h4>
-          <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
+          <p>$${item.price.toFixed(2)} c/u</p>
         </div>
         <div class="cart-item-controls">
           <button data-id="${item.id}" class="qty-decrease">-</button>
@@ -133,7 +146,7 @@ function showCart() {
       </div>
     `).join('');
 
-    // attach listeners for the dynamically created buttons
+    // Attach event listeners for dynamically created buttons
     cartItems.querySelectorAll('.qty-decrease').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
@@ -141,6 +154,7 @@ function showCart() {
         if (it) updateQuantity(id, it.quantity - 1);
       });
     });
+
     cartItems.querySelectorAll('.qty-increase').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
@@ -148,6 +162,7 @@ function showCart() {
         if (it) updateQuantity(id, it.quantity + 1);
       });
     });
+
     cartItems.querySelectorAll('.remove-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
@@ -156,7 +171,11 @@ function showCart() {
     });
   }
 
+  // Show modal with flex display
   modal.style.display = 'flex';
+  
+  // Prevent body scroll when modal is open
+  document.body.style.overflow = 'hidden';
 
   // Restore scroll position after rendering
   setTimeout(() => {
@@ -169,6 +188,8 @@ function hideCart() {
   const modal = document.getElementById('cartModal');
   if (modal) {
     modal.style.display = 'none';
+    // Restore body scroll
+    document.body.style.overflow = '';
   }
 }
 
@@ -191,7 +212,7 @@ function showAddToCartAlert(productName) {
     padding: 12px 20px;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 10000;
+    z-index: 10001;
     font-size: 14px;
   `;
 
@@ -203,7 +224,7 @@ function showAddToCartAlert(productName) {
   }, 2500);
 }
 
-// small helper to avoid injection when inserting names
+// Helper to avoid XSS injection when inserting names
 function escapeHtml(str) {
   return String(str)
     .replaceAll('&', '&amp;')
@@ -223,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cartBtn.addEventListener('click', showCart);
   }
 
-  // Close cart modal
+  // Close cart modal button
   const closeBtn = document.getElementById('closeCart');
   if (closeBtn) {
     closeBtn.addEventListener('click', hideCart);
@@ -236,6 +257,25 @@ document.addEventListener('DOMContentLoaded', function() {
       if (e.target === modal) {
         hideCart();
       }
+    });
+  }
+
+  // Clear cart button
+  const clearBtn = document.getElementById('btnClearCart');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearCart);
+  }
+
+  // Checkout button (placeholder)
+  const checkoutBtn = document.getElementById('btnCheckout');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', function() {
+      if (cart.length === 0) {
+        alert('El carrito está vacío');
+        return;
+      }
+      alert('Funcionalidad de checkout en desarrollo...');
+      // Aquí irá la lógica de checkout
     });
   }
 });
