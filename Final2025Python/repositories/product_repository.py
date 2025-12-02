@@ -71,12 +71,7 @@ class ProductRepository(BaseRepositoryImpl):
 
         # 🔎 Search by name/description
         if search:
-            filters.append(
-                or_(
-                    self.model.name.ilike(f"%{search}%"),
-                    self.model.description.ilike(f"%{search}%")
-                )
-            )
+            filters.append(self.model.name.ilike(f"%{search}%"))
 
         # 📁 Filter by category
         if category_id:
