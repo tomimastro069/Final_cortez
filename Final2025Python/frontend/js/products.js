@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           console.log("CLICK:", product);
           addToCart(product);
+          showNotification(`${product.name} agregado al carrito!`, 'success');
         } catch (err) {
           console.error('addToCart failed', err);
         }

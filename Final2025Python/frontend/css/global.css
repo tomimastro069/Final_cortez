@@ -34,6 +34,11 @@ body{
   font-size:16px;
 }
 
+/* Remove underlines from all links */
+a {
+  text-decoration: none;
+}
+
 /* container */
 .container{
   width:calc(100% - 2*var(--container-padding));
@@ -143,7 +148,7 @@ body{
   cursor:pointer;
   border:none;
   font-weight:600;
-  transition: all 0.2s ease-out;
+  transition: all 0.2s cubic-bezier(0, 0, 0.42, 1.35);
 }
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -227,6 +232,17 @@ p{ margin:0 0 10px 0; color:var(--muted) }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
   }
 }
 

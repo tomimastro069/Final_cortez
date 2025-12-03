@@ -124,7 +124,7 @@
 #cartEmpty {
   display: none;
   text-align: center;
-  padding: 60px 20px;
+  padding: 1.3rem;
   color: #999;
   font-size: 18px;
 }
