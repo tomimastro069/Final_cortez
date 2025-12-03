@@ -3,17 +3,18 @@
 */
 
 :root{
-  --bg: #0d0f14;
-  --panel: #0f1116;
-  --muted: #9aa6bf;
-  --text: #e6eef8;
-  --accent: #1E90FF; /* azul eléctrico */
-  --accent-2: #3A6DFF;
-  --glass: rgba(255,255,255,0.03);
-  --border: rgba(255,255,255,0.06);
-  --radius: 10px;
-  --shadow: 0 6px 18px rgba(2,6,23,0.6);
-  --glass-border: 1px solid rgba(255,255,255,0.04);
+  --bg: #ffffff;
+  --panel: #fafafa;
+  --muted: #6c757d;
+  --text: #212529;
+  --accent-start: #667eea;
+  --accent-end: #764ba2;
+  --accent-gradient: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+  --danger: #f44336;
+  --border: #e0e0e0;
+  --radius: 12px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  --glass-border: 1px solid #dee2e6;
   --max-width: 1200px;
   --container-padding: 16px;
   --fw-regular: 500;
@@ -25,7 +26,7 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,var(--bg) 0%, #081018 100%);
+  background-color: var(--panel);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -47,9 +48,9 @@ body{
    ----------------------- */
 .navbar{
   width:100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: var(--bg);
   backdrop-filter: blur(6px);
-  border-bottom: var(--glass-border);
+  border-bottom: 1px solid var(--border);
   position:sticky;
   top:0;
   z-index:80;
@@ -121,11 +122,16 @@ body{
 .h-center{display:flex;align-items:center;justify-content:center}
 .v-center{display:flex;align-items:center}
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  background: var(--bg);
   border-radius:var(--radius);
   padding:14px;
-  border:var(--glass-border);
-  box-shadow:var(--shadow);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-out;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 .btn{
   display:inline-flex;
@@ -137,17 +143,29 @@ body{
   cursor:pointer;
   border:none;
   font-weight:600;
+  transition: all 0.2s ease-out;
 }
-.btn-primary{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow: 0 6px 18px rgba(58,109,255,0.12); }
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
 .btn-secondary {
     background-color: transparent;
     border: 1px solid var(--border);
-    color: #fff;
+    color: var(--text);
 }
 .btn-secondary:hover {
-    background-color: var(--glass);
+    background-color: var(--panel);
 }
-.btn-ghost{ background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text) }
+.btn-ghost{ background:transparent; border:1px solid var(--border); color:var(--text) }
+.btn-ghost:hover { background-color: var(--panel); }
 
 /* forms */
 input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"], select, textarea{
@@ -155,9 +173,14 @@ input[type="text"], input[type="email"], input[type="password"], input[type="tel
   padding:10px 12px;
   border-radius:8px;
   border:1px solid var(--border);
-  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  background: var(--bg);
   color:var(--text);
   font-size:0.95rem;
+  transition: border-color 0.2s;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-start);
 }
 
 /* headings */
@@ -178,10 +201,11 @@ p{ margin:0 0 10px 0; color:var(--muted) }
 .modal .modal-content{
   width:95%;
   max-width:760px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+  background: var(--bg);
   border-radius:12px;
   padding:18px;
-  border:var(--glass-border);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 /* responsive helpers */
@@ -193,6 +217,38 @@ p{ margin:0 0 10px 0; color:var(--muted) }
 
 /* small text */
 .small{ font-size:0.85rem; color:var(--muted) }
+
+/* Animations from cart */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
 
 /* ----------------------
    BREAKPOINTS (tablet / desktop)
