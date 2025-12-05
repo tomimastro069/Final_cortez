@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - TechStore</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css" />
+  <style>
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .dashboard-card {
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .dashboard-card h3 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+
+    .profile-info {
+      margin-bottom: 1rem;
+    }
+
+    .profile-info p {
+      margin: 0.5rem 0;
+    }
+
+    .btn-logout {
+      background: var(--color-error);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-logout:hover {
+      background: #d32f2f;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error {
+      color: var(--color-error);
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="index.html" class="logo">🛒 <span>TechStore</span></a>
+
+        <div class="navbar-menu">
+          <a href="products.html" class="nav-link">Productos</a>
+
+          <button class="btn-icon" id="btnCartNav" title="Carrito">
+            🛒 <span class="badge" id="cartBadge">0</span>
+          </button>
+
+          <button class="btn-icon" id="btnLogout" title="Cerrar Sesión">
+            🚪 Salir
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-container">
+    <div class="dashboard-header">
+      <h1>👤 Mi Dashboard</h1>
+      <p>Bienvenido a tu panel de control</p>
+    </div>
+
+    <div id="dashboardContent">
+      <div class="loading">Cargando...</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
