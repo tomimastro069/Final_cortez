@@ -65,7 +65,7 @@ def create_fastapi_app() -> FastAPI:
         )
 
     # ----- Controllers -----
-    fastapi_app.include_router(ClientController().router, prefix="/clients")
+    fastapi_app.include_router(ClientController().router, prefix="/api/v1/clients")
     fastapi_app.include_router(OrderController().router, prefix="/orders")
     fastapi_app.include_router(ProductController().router, prefix="/products")
     fastapi_app.include_router(AddressController().router, prefix="/addresses")

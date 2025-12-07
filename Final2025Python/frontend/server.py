@@ -32,6 +32,20 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(405)
             self.end_headers()
 
+    def do_PUT(self):
+        if self.path.startswith('/api/'):
+            self.proxy_api_request()
+        else:
+            self.send_response(405)
+            self.end_headers()
+
+    def do_DELETE(self):
+        if self.path.startswith('/api/'):
+            self.proxy_api_request()
+        else:
+            self.send_response(405)
+            self.end_headers()
+
     def proxy_api_request(self):
         """Proxy API requests to the backend to avoid CORS issues"""
         # Convert /api/ path to backend URL
@@ -43,7 +57,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             method = self.command
             data = None
 
-            if method in ['POST', 'PUT', 'PATCH']:
+            if method in ['POST', 'PUT', 'PATCH', 'DELETE']:
                 content_length = int(self.headers.get('Content-Length', 0))
                 if content_length > 0:
                     data = self.rfile.read(content_length)

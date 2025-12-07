@@ -21,6 +21,8 @@
         <div class="navbar-menu">
           <a href="products.html" class="nav-link active">Productos</a>
 
+          <a href="dashboard.html" class="nav-link" id="profileLink" style="display:none;">Mi Perfil</a>
+
           <button class="btn-icon" id="btnCartNav" title="Carrito">
             🛒 <span class="badge" id="cartBadge">0</span>
           </button>
@@ -149,19 +151,58 @@
     </div>
   </div>
 
-  <!-- Checkout / Success / Login modals same structure as index (reuse) -->
-  <!-- Login Modal (same as index) -->
+  <!-- Login Modal -->
   <div class="modal" id="loginModal">
     <div class="modal-content">
       <div class="modal-header row">
         <h2>👤 Iniciar Sesión</h2>
         <button class="modal-close btn-icon" id="closeLogin">&times;</button>
       </div>
+
       <div class="modal-body">
+        <div class="auth-tabs row">
+          <button class="auth-tab btn-ghost active" data-tab="login">Iniciar Sesión</button>
+          <button class="auth-tab btn-ghost" data-tab="register">Registrarse</button>
+        </div>
+
+        <!-- Login Form -->
         <form id="loginForm" class="auth-form">
-          <div class="form-group"><label class="small">Email</label><input type="email" required></div>
-          <div class="form-group"><label class="small">Contraseña</label><input type="password" required></div>
+          <div class="form-group">
+            <label class="small">Email</label>
+            <input type="email" name="email" required placeholder="tu@email.com"/>
+          </div>
+
+          <div class="form-group">
+            <label class="small">Contraseña</label>
+            <input type="password" name="password" required placeholder="••••••••"/>
+          </div>
+
           <button type="submit" class="btn btn-primary" style="width:100%;">Iniciar Sesión</button>
+        </form>
+
+        <!-- Register Form (oculto - se muestra con JS) -->
+        <form id="registerForm" class="auth-form" style="display:none;">
+          <div class="form-group">
+            <label class="small">Nombre</label>
+            <input name="name" required placeholder="Tu nombre"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Apellido</label>
+            <input name="lastname" required placeholder="Tu apellido"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Email</label>
+            <input type="email" name="email" required placeholder="tu@email.com"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Teléfono</label>
+            <input name="telephone" placeholder="+549123456789"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Contraseña</label>
+            <input type="password" name="password" required placeholder="••••••••"/>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Crear Cuenta</button>
         </form>
       </div>
     </div>
@@ -169,6 +210,7 @@
 
   <!-- Scripts -->
   <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/products.js"></script>
 </body>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - TechStore</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .admin-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 1.5rem;
+    }
+    .tab-link {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      border-bottom: 2px solid transparent;
+    }
+    .tab-link.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">🛒 <span>TechStore</span></a>
+        <div class="navbar-menu">
+            <a href="products.html" class="nav-link">Productos</a>
+            <a href="dashboard.html" class="nav-link">Mi Perfil</a>
+            <a href="admin.html" class="nav-link active">Admin</a>
+            <button class="btn-icon" id="btnLogout" title="Cerrar Sesión" style="display: none;">
+                🚪 Salir
+            </button>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Admin Content -->
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>🛠️ Panel de Administración</h1>
+      <p>Gestiona productos y categorías de la tienda.</p>
+    </div>
+
+    <!-- Product Management -->
+    <section class="admin-section">
+      <h2>Gestión de Productos</h2>
+      <div class="tabs">
+        <button class="tab-link active" data-tab="product-create">Crear Nuevo</button>
+        <button class="tab-link" data-tab="product-manage">Gestionar Existentes</button>
+      </div>
+      <div id="product-create" class="tab-content active">
+        <div class="admin-card">
+          <h3>Crear Nuevo Producto</h3>
+          <form id="createProductForm" class="form">
+            <!-- Form fields remain the same -->
+            <div class="form-group">
+                <label for="productName">Nombre</label>
+                <input type="text" id="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Descripción</label>
+                <textarea id="productDescription" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Precio</label>
+                <input type="number" id="productPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="productStock">Stock</label>
+                <input type="number" id="productStock" required>
+            </div>
+            <div class="form-group">
+                <label for="productCategory">Categoría</label>
+                <select id="productCategory" required>
+                    <option value="">Selecciona una categoría...</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Crear Producto</button>
+          </form>
+        </div>
+      </div>
+      <div id="product-manage" class="tab-content">
+        <div class="admin-card">
+          <h3>Listado de Productos</h3>
+          <table class="table" id="productsTable">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody"></tbody>
+          </table>
+          <div id="productsLoading" class="loading">Cargando productos...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Management -->
+    <section class="admin-section">
+      <h2>Gestión de Categorías</h2>
+      <div class="tabs">
+        <button class="tab-link active" data-tab="category-create">Crear Nueva</button>
+        <button class="tab-link" data-tab="category-manage">Gestionar Existentes</button>
+      </div>
+      <div id="category-create" class="tab-content active">
+        <div class="admin-card">
+          <h3>Crear Nueva Categoría</h3>
+          <form id="createCategoryForm" class="form">
+            <div class="form-group">
+              <label for="categoryName">Nombre</label>
+              <input type="text" id="categoryName" required>
+            </div>
+            <button type="submit" class="btn-primary">Crear Categoría</button>
+          </form>
+        </div>
+      </div>
+      <div id="category-manage" class="tab-content">
+        <div class="admin-card">
+          <h3>Listado de Categorías</h3>
+          <table class="table" id="categoriesTable">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="categoriesTableBody"></tbody>
+          </table>
+          <div id="categoriesLoading" class="loading">Cargando categorías...</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modify Product Modal -->
+  <div id="modifyProductModal" class="modal" style="display: none;">
+      <!-- Modal content remains the same -->
+      <div class="modal-content">
+        <span class="close-btn" id="closeModifyModal">&times;</span>
+        <h2>Modificar Producto</h2>
+        <form id="modifyProductForm" class="form">
+            <input type="hidden" id="modifyProductId">
+            <div class="form-group">
+                <label for="modifyProductName">Nombre</label>
+                <input type="text" id="modifyProductName" required>
+            </div>
+            <div class="form-group">
+                <label for="modifyProductDescription">Descripción</label>
+                <textarea id="modifyProductDescription" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="modifyProductPrice">Precio</label>
+                <input type="number" id="modifyProductPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="modifyProductStock">Stock</label>
+                <input type="number" id="modifyProductStock" required>
+            </div>
+            <div class="form-group">
+                <label for="modifyProductCategory">Categoría</label>
+                <select id="modifyProductCategory" required></select>
+            </div>
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

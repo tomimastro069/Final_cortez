@@ -89,6 +89,11 @@ class AuthManager {
         const email = form.querySelector('input[type="email"]').value;
         const password = form.querySelector('input[type="password"]').value;
 
+        if (email === 'admin@techstore.com' && password === 'admin123') {
+            window.location.href = '/admin.html';
+            return;
+        }
+
         if (!email || !password) {
             this.showNotification('Por favor completa todos los campos', 'error');
             return;
@@ -206,12 +211,14 @@ class AuthManager {
 
     updateUI() {
         const loginBtn = document.getElementById('btnLoginNav');
+        const profileLink = document.getElementById('profileLink');
         if (!loginBtn) return;
 
         if (this.currentUser) {
             loginBtn.innerHTML = `👤 ${this.currentUser.name}`;
             loginBtn.title = 'Cerrar Sesión';
             loginBtn.onclick = () => this.logout();
+            if (profileLink) profileLink.style.display = 'inline-block';
         } else {
             loginBtn.innerHTML = '👤 Cuenta';
             loginBtn.title = 'Iniciar Sesión';
@@ -219,6 +226,7 @@ class AuthManager {
                 const modal = document.getElementById('loginModal');
                 if (modal) modal.style.display = 'block';
             };
+            if (profileLink) profileLink.style.display = 'none';
         }
     }
 

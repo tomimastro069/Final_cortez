@@ -20,3 +20,4 @@ class ClientSchema(BaseSchema):
         description="Client's phone number"
     )
     password: str = Field(..., min_length=1, description="Client's password")
+    is_admin: bool = Field(default=False, description="Whether the client is an admin")
