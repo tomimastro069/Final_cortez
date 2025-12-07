@@ -24,6 +24,14 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         else:
             super().do_GET()
 
+    def do_POST(self):
+        # Check if this is an API request
+        if self.path.startswith('/api/'):
+            self.proxy_api_request()
+        else:
+            self.send_response(405)
+            self.end_headers()
+
     def proxy_api_request(self):
         """Proxy API requests to the backend to avoid CORS issues"""
         # Convert /api/ path to backend URL
@@ -31,8 +39,26 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         backend_url = f"{API_BASE_URL}{api_path}"
 
         try:
+            # Get request method and body for POST/PUT requests
+            method = self.command
+            data = None
+
+            if method in ['POST', 'PUT', 'PATCH']:
+                content_length = int(self.headers.get('Content-Length', 0))
+                if content_length > 0:
+                    data = self.rfile.read(content_length)
+
+            # Create request object
+            req = urllib.request.Request(backend_url, data=data, method=method)
+
+            # Copy headers from client to backend
+            for header_name, header_value in self.headers.items():
+                if header_name.lower() not in ['host', 'connection', 'keep-alive', 'proxy-authenticate',
+                                             'proxy-authorization', 'te', 'trailers', 'transfer-encoding', 'upgrade']:
+                    req.add_header(header_name, header_value)
+
             # Forward the request to the backend
-            with urllib.request.urlopen(backend_url) as response:
+            with urllib.request.urlopen(req) as response:
                 self.send_response(response.status)
                 self.send_header('Content-Type', response.headers.get('Content-Type', 'application/json'))
                 self.send_header('Access-Control-Allow-Origin', '*')
@@ -57,7 +83,6 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             error_data = {'error': f'Proxy Error: {str(e)}'}
-            self.wfile.write(json.dumps(error_data).encode())
 
     def end_headers(self):
         # Add CORS headers for static files

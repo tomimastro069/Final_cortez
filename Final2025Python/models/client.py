@@ -11,6 +11,7 @@ class ClientModel(BaseModel):
     lastname = Column(String, index=True)
     email = Column(String, unique=True, index=True)
     telephone = Column(String)
+    password = Column(String)
 
     addresses = relationship("AddressModel", back_populates="client", cascade="all, delete-orphan", lazy="select")
     orders = relationship("OrderModel", back_populates="client", lazy="select")

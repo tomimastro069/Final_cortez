@@ -41,10 +41,11 @@ class BaseControllerImpl:
 
         # POST crear
         @self.router.post("/", response_model=self.schema)
+        @self.router.post("", response_model=self.schema)
         async def create(entity: self.schema, db: Session = Depends(get_db)):
             try:
                 service = self.service_factory(db)
-                return service.create(entity)
+                return service.save(entity)
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"Error al crear: {str(e)}")
 

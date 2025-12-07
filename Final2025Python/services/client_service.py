@@ -13,3 +13,11 @@ class ClientService(BaseServiceImpl):
             schema=ClientSchema,
             db=db
         )
+
+    def authenticate(self, email: str, password: str):
+        """Authenticate a client by email and password."""
+        client = self.repository.get_by_email(email)
+        if client and client.password == password:
+            return client
+        return None
+

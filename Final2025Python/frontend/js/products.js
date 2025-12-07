@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const productsGrid = document.getElementById('productsGrid');
   const productsCount = document.getElementById('productsCount');
   const loading = document.getElementById('loading');
   const noProducts = document.getElementById('noProducts');
-
+  const API_BASE = "http://localhost:8000";
   if (!productsGrid || !productsCount || !loading || !noProducts) {
     console.error('DOM elements missing for products page');
     return;
@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   try {
     const query = buildQueryParams();
-    const url = query ? `/api/products/filter?${query}` : `/api/products`;
+    const url = query 
+      ? `${API_BASE}/products/filter?${query}` 
+      : `${API_BASE}/products/`;
+
+    console.log("Fetching:", url);
 
     const resp = await fetch(url);
     if (!resp.ok) throw new Error("Error en la API: " + resp.status);
@@ -37,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showLoading(false);
   }
 }
+
 
 
   function displayProducts(products) {
@@ -164,6 +169,33 @@ function buildQueryParams() {
   return params.toString();
 }
 
+async function fetchCategories() {
+  try {
+    const resp = await fetch(`${API_BASE}/categories`);
+    if (!resp.ok) throw new Error("Error fetching categories");
+
+    const categories = await resp.json();
+    const categoriesList = document.getElementById('categoriesList');
+
+    // Clear existing buttons except the "all" button
+    const allButton = categoriesList.querySelector('[data-category="all"]');
+    categoriesList.innerHTML = '';
+    categoriesList.appendChild(allButton);
+
+    // Add dynamic category buttons
+    categories.forEach(category => {
+      const button = document.createElement('button');
+      button.className = 'category-btn btn-ghost';
+      button.setAttribute('data-category', category.id);
+      button.textContent = category.name;
+      categoriesList.appendChild(button);
+    });
+
+  } catch (err) {
+    console.error("Error loading categories:", err);
+  }
+}
+
 function setupFilters() {
   document.getElementById("btnSearch").addEventListener("click", fetchAndDisplayProducts);
 
@@ -198,7 +230,10 @@ function setupFilters() {
     fetchAndDisplayProducts();
   });
 }
-setupFilters();
+
+  // Load categories first, then setup filters and load products
+  await fetchCategories();
+  setupFilters();
   // initial load
   fetchAndDisplayProducts();
 });

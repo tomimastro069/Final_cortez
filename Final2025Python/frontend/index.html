@@ -271,25 +271,39 @@
         <form id="loginForm" class="auth-form">
           <div class="form-group">
             <label class="small">Email</label>
-            <input type="email" required placeholder="tu@email.com"/>
+            <input type="email" name="email" required placeholder="tu@email.com"/>
           </div>
 
           <div class="form-group">
             <label class="small">Contraseña</label>
-            <input type="password" required placeholder="••••••••"/>
+            <input type="password" name="password" required placeholder="••••••••"/>
           </div>
 
           <button type="submit" class="btn btn-primary" style="width:100%;">Iniciar Sesión</button>
-          <p class="auth-note small">Nota: Esta es una demostración. El login no está implementado.</p>
         </form>
 
         <!-- Register Form (oculto - se muestra con JS) -->
         <form id="registerForm" class="auth-form" style="display:none;">
-          <div class="form-group"><label class="small">Nombre</label><input/></div>
-          <div class="form-group"><label class="small">Apellido</label><input/></div>
-          <div class="form-group"><label class="small">Email</label><input/></div>
-          <div class="form-group"><label class="small">Teléfono</label><input/></div>
-          <div class="form-group"><label class="small">Contraseña</label><input type="password"/></div>
+          <div class="form-group">
+            <label class="small">Nombre</label>
+            <input name="name" required placeholder="Tu nombre"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Apellido</label>
+            <input name="lastname" required placeholder="Tu apellido"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Email</label>
+            <input type="email" name="email" required placeholder="tu@email.com"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Teléfono</label>
+            <input name="telephone" placeholder="+549123456789"/>
+          </div>
+          <div class="form-group">
+            <label class="small">Contraseña</label>
+            <input type="password" name="password" required placeholder="••••••••"/>
+          </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">Crear Cuenta</button>
         </form>
       </div>
@@ -298,6 +312,7 @@
 
   <!-- Scripts -->
   <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/home.js"></script>
 </body>

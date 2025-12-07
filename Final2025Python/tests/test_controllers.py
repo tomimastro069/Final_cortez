@@ -168,10 +168,11 @@ class TestClientEndpoints:
     def test_create_client(self, api_client):
         """Test POST /clients/."""
         payload = {
-            "name": "Jane Smith",
+            "name": "Jane",
+            "lastname": "Smith",
             "email": "jane@example.com",
-            "telephone": "+9876543210",
-            "age": 25
+            "password": "securepassword",
+            "telephone": "+9876543210"
         }
         response = api_client.post("/clients/", json=payload)
 
