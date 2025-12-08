@@ -171,7 +171,7 @@ function buildQueryParams() {
 
 async function fetchCategories() {
   try {
-    const resp = await fetch(`${API_BASE}/categories`);
+    const resp = await fetch(`${API_BASE}/categories/`); // <--- Asegurate de tener la barra final
     if (!resp.ok) throw new Error("Error fetching categories");
 
     const categories = await resp.json();
@@ -182,11 +182,10 @@ async function fetchCategories() {
     categoriesList.innerHTML = '';
     categoriesList.appendChild(allButton);
 
-    // Add dynamic category buttons
     categories.forEach(category => {
       const button = document.createElement('button');
       button.className = 'category-btn btn-ghost';
-      button.setAttribute('data-category', category.id);
+      button.setAttribute('data-category', category.id ?? category.id_key);
       button.textContent = category.name;
       categoriesList.appendChild(button);
     });
@@ -195,7 +194,6 @@ async function fetchCategories() {
     console.error("Error loading categories:", err);
   }
 }
-
 function setupFilters() {
   document.getElementById("btnSearch").addEventListener("click", fetchAndDisplayProducts);
 

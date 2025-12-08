@@ -1,18 +1,22 @@
+const API_BASE = "http://localhost:8000";
 document.addEventListener('DOMContentLoaded', () => {
-  const token = localStorage.getItem('authToken');
-  if (!token) {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser) {
     window.location.href = 'index.html';
     return;
   }
 
-  loadProfile();
-  loadOrders();
+  const client_id = currentUser.id ?? currentUser.id_key;
+
+  loadProfile(client_id);
+  loadOrders(client_id);
 
   // Logout functionality
   const btnLogout = document.getElementById('btnLogout');
   if (btnLogout) {
     btnLogout.addEventListener('click', () => {
-      localStorage.removeItem('authToken');
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('client_id');
       window.location.href = 'index.html';
     });
   }
@@ -26,14 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-async function loadProfile() {
+async function loadProfile(client_id) {
   try {
-    const client_id = localStorage.getItem('client_id');
-    const response = await fetch(`/api/v1/clients/${client_id}`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-      }
-    });
+    const response = await fetch(`${API_BASE}/api/v1/clients/${client_id}`);
 
     if (response.ok) {
       const profile = await response.json();
@@ -42,24 +41,20 @@ async function loadProfile() {
       document.getElementById('profileEmail').textContent = profile.email;
       document.getElementById('profileTelephone').textContent = profile.telephone || 'No especificado';
     } else {
-      alert('Error loading profile');
-      localStorage.removeItem('authToken');
+      alert('Error al cargar perfil');
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('client_id');
       window.location.href = 'index.html';
     }
   } catch (err) {
     console.error('Profile load error:', err);
-    alert('Error loading profile');
+    alert('Error al cargar perfil');
   }
 }
 
-async function loadOrders() {
+async function loadOrders(client_id) {
   try {
-    const client_id = localStorage.getItem('client_id');
-    const response = await fetch(`/api/v1/orders/clients/${client_id}/orders`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-      }
-    });
+    const response = await fetch(`/api/v1/orders/clients/${client_id}/orders`);
 
     if (response.ok) {
       const orders = await response.json();

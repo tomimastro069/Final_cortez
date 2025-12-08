@@ -215,6 +215,9 @@ class ProductService(BaseServiceImpl):
             skip=skip,
             limit=limit
         )
+        print(f"DEBUG: Type of products from repository: {type(products)}")
+        if products:
+            print(f"DEBUG: Type of first item in products: {type(products[0])}")
 
         # Cache the result
         products_dict = [p.model_dump() for p in products]

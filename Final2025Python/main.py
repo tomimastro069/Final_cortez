@@ -83,12 +83,12 @@ def create_fastapi_app() -> FastAPI:
     ]
 
     fastapi_app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+    CORSMiddleware,
+    allow_origins=["*"],  # 🔹 Permite cualquier origen
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
     logger.info(f"✅ CORS enabled: {origins}")
 
     fastapi_app.add_middleware(RequestIDMiddleware)

@@ -1,7 +1,7 @@
 /**
  * Authentication module for login and register functionality
  */
-
+const API_BASE = "http://localhost:8000";
 class AuthManager {
     constructor() {
         this.currentUser = null;
@@ -100,7 +100,7 @@ class AuthManager {
         }
 
         try {
-            const response = await fetch('/api/clients/login', {
+            const response = await fetch(`${API_BASE}/api/v1/clients/login` ,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ class AuthManager {
             if (telephone) {
                 payload.telephone = telephone;
             }
-            const response = await fetch('/api/clients/', {
+            const response = await fetch(`${API_BASE}/api/v1/clients/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

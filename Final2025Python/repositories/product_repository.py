@@ -1,3 +1,4 @@
+import logging
 from sqlalchemy.orm import Session, selectinload
 from sqlalchemy import select, and_, or_
 from typing import List, Optional
@@ -6,6 +7,7 @@ from models.product import ProductModel
 from repositories.base_repository_impl import BaseRepositoryImpl
 from schemas.product_schema import ProductSchema
 
+logger = logging.getLogger(__name__)
 
 class ProductRepository(BaseRepositoryImpl):
     """Repository for Product entity database operations."""
@@ -106,7 +108,11 @@ class ProductRepository(BaseRepositoryImpl):
         # Pagination
         stmt = stmt.offset(skip).limit(limit)
 
-        models = self.session.scalars(stmt).all()
+        try:
+            models = self.session.scalars(stmt).all()
+        except Exception as e:
+            logger.error(f"Error executing product filter query: {e}", exc_info=True)
+            raise # Re-raise the exception after logging
 
         # Convert to schema
         result = []

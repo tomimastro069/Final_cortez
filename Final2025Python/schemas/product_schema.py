@@ -17,7 +17,7 @@ class ProductSchema(BaseSchema):
     price: float = Field(..., gt=0, description="Product price (must be greater than 0, required)")
     stock: int = Field(default=0, ge=0, description="Product stock quantity (must be >= 0)")
 
-    category_id: int = Field(..., description="Category ID reference (required)")
+    category_id: Optional[int] = Field(None, description="Category ID reference (optional)")
 
     # ← Cambiar CategorySchema por CategoryBaseSchema
     category: Optional[CategoryBaseSchema] = None
