@@ -32,6 +32,22 @@
     object-fit: cover;
 }
 
+.image-placeholder {
+  width: 100%;
+  height: 160px;
+  background-color: var(--glass); /* A subtle background */
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 10px;
+  box-sizing: border-box; /* To include padding in the height */
+}
+
 .product-image:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);

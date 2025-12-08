@@ -7,13 +7,17 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from config.database import get_db_session
+# Override DB host and name for local script execution against Docker
+os.environ['POSTGRES_HOST'] = 'localhost'
+os.environ['POSTGRES_DB'] = 'postgres'
+
+from config.database import SessionLocal
 from models.product import ProductModel
 from models.category import CategoryModel
 
 def seed_products():
     """Create sample products and categories for testing."""
-    session = get_db_session()
+    session = SessionLocal()
     try:
         # Create categories if they don't exist
         categories_data = [
@@ -90,7 +94,77 @@ def seed_products():
                 "price": 900.00,
                 "stock": 14,
                 "category": categories["Tablets"]
-            }
+            },
+            {
+                "name": "Lenovo Legion 5",
+                "description": "Laptop gamer con RTX 4060 y Ryzen 7",
+                "price": 1700.00,
+                "stock": 10,
+                "category": categories["Laptops"]
+            },
+            {
+                "name": "Dell XPS 13",
+                "description": "Ultrabook premium con pantalla InfinityEdge",
+                "price": 1600.00,
+                "stock": 7,
+                "category": categories["Laptops"]
+            },
+            {
+                "name": "Xiaomi 14 Pro",
+                "description": "Smartphone de alto rendimiento con cámara Leica",
+                "price": 950.00,
+                "stock": 22,
+                "category": categories["Smartphones"]
+            },
+            {
+                "name": "Motorola Edge 50",
+                "description": "Smartphone con pantalla pOLED y cámara avanzada",
+                "price": 780.00,
+                "stock": 18,
+                "category": categories["Smartphones"]
+            },
+            {
+                "name": "iPad Air M2",
+                "description": "Tablet ligera con chip M2 y pantalla Liquid Retina",
+                "price": 1100.00,
+                "stock": 9,
+                "category": categories["Tablets"]
+            },
+            {
+                "name": "Amazon Fire HD 10",
+                "description": "Tablet accesible para consumo multimedia",
+                "price": 250.00,
+                "stock": 30,
+                "category": categories["Tablets"]
+            },
+            {
+                "name": "Auriculares Sony WH-1000XM5",
+                "description": "Auriculares inalámbricos con cancelación de ruido",
+                "price": 420.00,
+                "stock": 16,
+                "category": categories["Accesorios"]
+            },
+            {
+                "name": "Cargador GaN 65W",
+                "description": "Cargador rápido universal con tecnología GaN",
+                "price": 60.00,
+                "stock": 40,
+                "category": categories["Accesorios"]
+            },
+            {
+                "name": "Monitor LG UltraGear 27''",
+                "description": "Monitor gaming 144Hz IPS",
+                "price": 350.00,
+                "stock": 11,
+                "category": categories["Accesorios"]
+            },
+            {
+                "name": "SSD Samsung 990 Pro 2TB",
+                "description": "Unidad SSD NVMe de alto rendimiento",
+                "price": 220.00,
+                "stock": 25,
+                "category": categories["Accesorios"]
+            },
         ]
 
         for product_data in products_data:
@@ -99,7 +173,6 @@ def seed_products():
             if not existing:
                 product = ProductModel(
                     name=product_data["name"],
-                    description=product_data["description"],
                     price=product_data["price"],
                     stock=product_data["stock"],
                     category_id=product_data["category"].id_key
