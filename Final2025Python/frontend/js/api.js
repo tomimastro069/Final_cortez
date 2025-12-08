@@ -1,5 +1,5 @@
 class Api {
-    constructor(baseUrl = '') {
+    constructor(baseUrl = 'http://localhost:8000') {
         this.baseUrl = baseUrl;
     }
 

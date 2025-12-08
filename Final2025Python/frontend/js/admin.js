@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesTableBody = document.getElementById('categoriesTableBody');
     const categoriesLoading = document.getElementById('categoriesLoading');
 
+    const usersTableBody = document.getElementById('usersTableBody');
+    const usersLoading = document.getElementById('usersLoading');
+
     const modifyProductModal = document.getElementById('modifyProductModal');
     const closeModifyModal = document.getElementById('closeModifyModal');
     const modifyProductForm = document.getElementById('modifyProductForm');
@@ -21,15 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const modifyProductStock = document.getElementById('modifyProductStock');
     const modifyProductCategory = document.getElementById('modifyProductCategory');
 
-
     // --- Product Management ---
-
-    // Fetch and display all products
     async function loadProducts() {
         try {
             productsLoading.style.display = 'block';
             productsTableBody.innerHTML = '';
-            const products = await api.get('/api/products/');
+            const products = await api.get('/products/?skip=0&limit=100');
             products.forEach(product => {
                 const row = `
                     <tr data-id="${product.id_key}">
@@ -52,10 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Populate categories dropdown
     async function loadCategoriesForSelect() {
         try {
-            const categories = await api.get('/api/categories/');
+            const categories = await api.get('/categories/?skip=0&limit=100');
             const categoryOptions = categories.map(category => `<option value="${category.id_key}">${category.name}</option>`).join('');
             productCategorySelect.innerHTML = '<option value="">Selecciona una categoría...</option>' + categoryOptions;
             modifyProductCategory.innerHTML = categoryOptions;
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle create product form submission
     createProductForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('productName').value;
@@ -81,31 +79,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const productData = { name, description, price, stock, category_id };
 
         try {
-            const newProduct = await api.post('/api/products/', productData);
+            const newProduct = await api.post('/products/', productData);
             showNotification(`Producto "${newProduct.name}" creado exitosamente.`, 'success');
             createProductForm.reset();
-            loadProducts(); // Refresh product list
+            loadProducts();
         } catch (error) {
             showNotification('Error al crear el producto.', 'error');
             console.error('Error creating product:', error);
         }
     });
 
-    // Handle product table clicks for modify or delete
     productsTableBody.addEventListener('click', async (e) => {
         const target = e.target;
         const row = target.closest('tr');
         if (!row) return;
-
         const productId = row.dataset.id;
 
         if (target.classList.contains('delete-product')) {
             const productName = row.cells[0].textContent;
             if (confirm(`¿Estás seguro de que quieres eliminar el producto "${productName}"?`)) {
                 try {
-                    await api.delete(`/api/products/id/${productId}`);
+                    await api.delete(`/products/id/${productId}`);
                     showNotification('Producto eliminado exitosamente.', 'success');
-                    loadProducts(); // Refresh product list
+                    loadProducts();
                 } catch (error) {
                     showNotification('Error al eliminar el producto.', 'error');
                     console.error('Error deleting product:', error);
@@ -114,10 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (target.classList.contains('modify-product')) {
-            // Obtener los datos directamente de la fila de la tabla
-            const product = await api.get(`/api/products/id/${productId}`); // Usamos la API para obtener todos los datos, incluida la descripción
-
-            // Rellenar el formulario en el modal
+            const product = await api.get(`/products/id/${productId}`);
             modifyProductId.value = productId;
             modifyProductName.value = product.name;
             modifyProductDescription.value = product.description;
@@ -126,15 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (product.category) {
                 modifyProductCategory.value = product.category.id_key;
             }
-
-            // Mostrar el modal
             modifyProductModal.style.display = 'block';
         }
     });
 
-    // La función openModifyModal ya no es necesaria, la hemos integrado arriba.
-
-    // Handle modify product form submission
     modifyProductForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const productId = modifyProductId.value;
@@ -147,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            await api.put(`/api/products/id/${productId}`, productData);
+            await api.put(`/products/id/${productId}`, productData);
             showNotification('Producto actualizado exitosamente.', 'success');
             closeModifyModalFunction();
             loadProducts();
@@ -157,24 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close modal logic
     const closeModifyModalFunction = () => modifyProductModal.style.display = 'none';
     closeModifyModal.addEventListener('click', closeModifyModalFunction);
     window.addEventListener('click', (e) => {
-        if (e.target === modifyProductModal) {
-            closeModifyModalFunction();
-        }
+        if (e.target === modifyProductModal) closeModifyModalFunction();
     });
 
-
     // --- Category Management ---
-
-    // Fetch and display all categories
     async function loadCategories() {
         try {
             categoriesLoading.style.display = 'block';
             categoriesTableBody.innerHTML = '';
-            const categories = await api.get('/api/categories/');
+            const categories = await api.get('/categories/?skip=0&limit=100');
             categories.forEach(category => {
                 const row = `
                     <tr data-id="${category.id_key}">
@@ -194,78 +176,114 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle create category form submission
     createCategoryForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('categoryName').value;
-
         if (!name) {
             showNotification('Por favor, ingresa un nombre para la categoría.', 'error');
             return;
         }
-
         try {
-            const newCategory = await api.post('/api/categories', { name });
+            const newCategory = await api.post('/categories', { name });
             showNotification(`Categoría "${newCategory.name}" creada exitosamente.`, 'success');
             createCategoryForm.reset();
-            loadCategories(); // Refresh category list
-            loadCategoriesForSelect(); // Refresh product form dropdown
+            loadCategories();
+            loadCategoriesForSelect();
         } catch (error) {
             showNotification('Error al crear la categoría.', 'error');
             console.error('Error creating category:', error);
         }
     });
 
-    // Handle category deletion
     categoriesTableBody.addEventListener('click', async (e) => {
-        if (e.target.classList.contains('delete-category')) {
-            const row = e.target.closest('tr');
-            const categoryId = row.dataset.id;
-            const categoryName = row.cells[0].textContent;
-
-            if (confirm(`¿Estás seguro de que quieres eliminar la categoría "${categoryName}"?`)) {
-                try {
-                    await api.delete(`/api/categories/id/${categoryId}`);
-                    showNotification('Categoría eliminada exitosamente.', 'success');
-                    loadCategories(); // Refresh category list
-                    loadCategoriesForSelect(); // Refresh product form dropdown
-                } catch (error) {
-                    showNotification('Error al eliminar la categoría. Asegúrate de que no haya productos asociados a ella.', 'error');
-                    console.error('Error deleting category:', error);
-                }
-            }
+        if (!e.target.classList.contains('delete-category')) return;
+        const row = e.target.closest('tr');
+        const categoryId = row.dataset.id;
+        const categoryName = row.cells[0].textContent;
+        if (!confirm(`¿Estás seguro de que quieres eliminar la categoría "${categoryName}"?`)) return;
+        try {
+            await api.delete(`/categories/id/${categoryId}`);
+            showNotification('Categoría eliminada exitosamente.', 'success');
+            loadCategories();
+            loadCategoriesForSelect();
+        } catch (error) {
+            showNotification('Error al eliminar la categoría. Asegúrate de que no haya productos asociados a ella.', 'error');
+            console.error('Error deleting category:', error);
         }
     });
 
+    // --- User Management ---
+    async function loadUsers() {
+        try {
+            usersLoading.style.display = 'block';
+            usersTableBody.innerHTML = '';
+            const users = await api.get('/api/v1/clients/');
+            users.forEach(user => {
+                const fullName = `${user.name} ${user.lastname}`;
+                const role = user.is_admin ? 'Admin' : 'User';
+                const row = `
+                    <tr data-id="${user.id_key}">
+                        <td>${user.id_key}</td>
+                        <td>${fullName}</td>
+                        <td>${user.email}</td>
+                        <td>${role}</td>
+                        <td>
+                            <button class="btn-secondary btn-sm modify-user">Modificar</button>
+                            <button class="btn-danger btn-sm delete-user">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+                usersTableBody.innerHTML += row;
+            });
+        } catch (error) {
+            showNotification('Error al cargar los usuarios', 'error');
+            console.error('Error fetching users:', error);
+        } finally {
+            usersLoading.style.display = 'none';
+        }
+    }
+
+    usersTableBody.addEventListener('click', async e => {
+        const target = e.target;
+        const row = target.closest('tr');
+        if (!row) return;
+        const userId = row.dataset.id;
+
+        if (target.classList.contains('delete-user')) {
+            if (!confirm(`¿Eliminar usuario "${row.cells[1].textContent}"?`)) return;
+            try {
+                await api.delete(`/api/v1/clients/id/${userId}`);
+                showNotification('Usuario eliminado exitosamente.', 'success');
+                loadUsers();
+            } catch (error) {
+                showNotification('Error al eliminar el usuario.', 'error');
+                console.error(error);
+            }
+        }
+
+        if (target.classList.contains('modify-user')) {
+            showNotification('Funcionalidad de modificar usuario aún no implementada.', 'info');
+            console.log('Modify user ID:', userId);
+        }
+    });
 
     // --- General ---
-
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.textContent = message;
         document.body.appendChild(notification);
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
+        setTimeout(() => notification.remove(), 3000);
     }
 
     function setupTabs() {
         const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-
         tabLinks.forEach(link => {
             link.addEventListener('click', () => {
                 const tabId = link.dataset.tab;
-
-                // Deactivate all tabs in the same section
                 link.closest('.tabs').querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
                 link.classList.add('active');
-
-                // Deactivate all content in the same section
                 link.closest('.admin-section').querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // Activate the target content
                 document.getElementById(tabId).classList.add('active');
             });
         });
@@ -277,8 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadProducts();
         loadCategories();
         loadCategoriesForSelect();
-
-        // Set initial tab states
+        loadUsers();
         document.querySelector('[data-tab="product-create"]').click();
         document.querySelector('[data-tab="category-create"]').click();
     }

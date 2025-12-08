@@ -161,6 +161,32 @@
         </div>
       </div>
     </section>
+
+    <!-- User Management -->
+    <section class="admin-section">
+      <h2>Gestión de Usuarios</h2>
+      <div class="tabs">
+        <button class="tab-link active" data-tab="user-manage">Listar Usuarios</button>
+      </div>
+      <div id="user-manage" class="tab-content active">
+        <div class="admin-card">
+          <h3>Listado de Usuarios</h3>
+          <table class="table" id="usersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+          <div id="usersLoading" class="loading">Cargando usuarios...</div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- Modify Product Modal -->
