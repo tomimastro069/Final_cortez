@@ -22,3 +22,11 @@ class CategorySchema(CategoryBaseSchema):
     Solo usar cuando explícitamente necesites la lista de productos.
     """
     products: Optional[List['ProductSchema']] = []
+
+
+class CategoryListSchema(CategoryBaseSchema):
+    """
+    Schema para LISTAR categorías SIN productos anidados.
+    Úsalo en GET /categories/ para evitar ciclos.
+    """
+    products_count: Optional[int] = Field(None, description="Number of products in category")

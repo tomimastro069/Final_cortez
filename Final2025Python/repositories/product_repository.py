@@ -1,55 +1,65 @@
-import logging
-from sqlalchemy.orm import Session, selectinload
-from sqlalchemy import select, and_, or_
+"""Product repository with controlled relationship loading."""
 from typing import List, Optional
-
+from sqlalchemy.orm import Session, selectinload, joinedload
+from sqlalchemy import or_, and_
 from models.product import ProductModel
 from repositories.base_repository_impl import BaseRepositoryImpl
 from schemas.product_schema import ProductSchema
 
-logger = logging.getLogger(__name__)
 
 class ProductRepository(BaseRepositoryImpl):
-    """Repository for Product entity database operations."""
+    """Repository for Product entity with optimized loading."""
 
     def __init__(self, db: Session):
         super().__init__(ProductModel, ProductSchema, db)
 
-    # ============================================================
-    # =                 FIND ALL (YA EXISTENTE)                   =
-    # ============================================================
     def find_all(self, skip: int = 0, limit: int = 100) -> List[ProductSchema]:
         """
-        Overrides the base find_all to optimize product-category loading.
+        Get all products WITHOUT nested order_details.product circular reference.
         """
-        stmt = (
-            select(self.model)
-            .options(selectinload(self.model.category))
+        products = (
+            self.session.query(ProductModel)
+            .options(
+                # ✅ Carga category sin problemas
+                joinedload(ProductModel.category),
+                # ✅ Carga reviews sin problemas
+                selectinload(ProductModel.reviews),
+                # ❌ NO carga order_details para evitar ciclo
+            )
             .offset(skip)
             .limit(limit)
+            .all()
         )
-        models = self.session.scalars(stmt).all()
+        
+        # ✅ Convertir a schema usando model_validate
+        return [ProductSchema.model_validate(product) for product in products]
 
-        result = []
-        for model in models:
-            product_dict = model.__dict__.copy()
-            product_dict.pop('_sa_instance_state', None)
+    def find(self, id_key: int) -> ProductSchema:
+        """
+        Get single product WITHOUT loading nested order_details.product.
+        """
+        from models.order_detail import OrderDetailModel
+        
+        product = (
+            self.session.query(ProductModel)
+            .options(
+                joinedload(ProductModel.category),
+                selectinload(ProductModel.reviews),
+                # ✅ SOLUCIÓN: Carga order_details pero NO el product anidado
+                selectinload(ProductModel.order_details).lazyload(OrderDetailModel.product)
+            )
+            .filter(ProductModel.id_key == id_key)
+            .first()
+        )
+        
+        if not product:
+            from repositories.base_repository_impl import InstanceNotFoundError
+            raise InstanceNotFoundError(
+                f"Product with id {id_key} not found"
+            )
+        
+        return ProductSchema.model_validate(product)
 
-            if model.category:
-                category_dict = model.category.__dict__.copy()
-                category_dict.pop('_sa_instance_state', None)
-                category_dict.pop('products', None)
-                product_dict['category'] = category_dict
-            else:
-                product_dict['category'] = None
-
-            result.append(self.schema.model_validate(product_dict))
-
-        return result
-
-    # ============================================================
-    # =                FILTER PRODUCTS (NUEVO)                    =
-    # ============================================================
     def filter_products(
         self,
         search: Optional[str] = None,
@@ -61,73 +71,44 @@ class ProductRepository(BaseRepositoryImpl):
         skip: int = 0,
         limit: int = 100
     ) -> List[ProductSchema]:
-        """
-        Advanced product filtering compatible with caching.
-        """
-
-        stmt = select(self.model).options(
-            selectinload(self.model.category)
+        """Filter products with optimized loading."""
+        
+        query = self.session.query(ProductModel).options(
+            joinedload(ProductModel.category),
+            selectinload(ProductModel.reviews),
+            # Sin order_details para listados
         )
 
-        filters = []
-
-        # 🔎 Search by name/description
-        if search:
-            filters.append(self.model.name.ilike(f"%{search}%"))
-
-        # 📁 Filter by category
-        if category_id:
-            filters.append(self.model.category_id == category_id)
-
-        # 💵 Price min
-        if min_price is not None:
-            filters.append(self.model.price >= min_price)
-
-        # 💵 Price max
-        if max_price is not None:
-            filters.append(self.model.price <= max_price)
-
-        # 📦 In stock only
-        if in_stock_only:
-            filters.append(self.model.stock > 0)
-
         # Apply filters
-        if filters:
-            stmt = stmt.where(and_(*filters))
+        if search:
+            search_pattern = f"%{search}%"
+            query = query.filter(
+                or_(
+                    ProductModel.name.ilike(search_pattern),
+                )
+            )
 
-        # 🔽 Sorting
+        if category_id:
+            query = query.filter(ProductModel.category_id == category_id)
+
+        if min_price is not None:
+            query = query.filter(ProductModel.price >= min_price)
+
+        if max_price is not None:
+            query = query.filter(ProductModel.price <= max_price)
+
+        if in_stock_only:
+            query = query.filter(ProductModel.stock > 0)
+
+        # Sorting
         if sort_by == "price_asc":
-            stmt = stmt.order_by(self.model.price.asc())
+            query = query.order_by(ProductModel.price.asc())
         elif sort_by == "price_desc":
-            stmt = stmt.order_by(self.model.price.desc())
-        elif sort_by == "name_asc":
-            stmt = stmt.order_by(self.model.name.asc())
-        elif sort_by == "name_desc":
-            stmt = stmt.order_by(self.model.name.desc())
+            query = query.order_by(ProductModel.price.desc())
+        elif sort_by == "name":
+            query = query.order_by(ProductModel.name.asc())
+        else:
+            query = query.order_by(ProductModel.id_key.desc())
 
-        # Pagination
-        stmt = stmt.offset(skip).limit(limit)
-
-        try:
-            models = self.session.scalars(stmt).all()
-        except Exception as e:
-            logger.error(f"Error executing product filter query: {e}", exc_info=True)
-            raise # Re-raise the exception after logging
-
-        # Convert to schema
-        result = []
-        for model in models:
-            product_dict = model.__dict__.copy()
-            product_dict.pop('_sa_instance_state', None)
-
-            if model.category:
-                category_dict = model.category.__dict__.copy()
-                category_dict.pop('_sa_instance_state', None)
-                category_dict.pop('products', None)
-                product_dict['category'] = category_dict
-            else:
-                product_dict['category'] = None
-
-            result.append(self.schema.model_validate(product_dict))
-
-        return result
+        products = query.offset(skip).limit(limit).all()
+        return [ProductSchema.model_validate(product) for product in products]
