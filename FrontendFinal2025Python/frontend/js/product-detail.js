@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------
     // Añade este estilo al head para el borde rojo
     const style = document.createElement('style');
-    style.textContent = `   
+    style.textContent = ` 
         .out-of-stock {
             border: 2px solid var(--color-error, #f44336) !important;
         }
