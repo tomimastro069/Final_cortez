@@ -42,6 +42,16 @@ class OrderService(BaseServiceImpl):
             InstanceNotFoundError: If client or bill doesn't exist
             ValueError: If validation fails
         """
+        # Validate required fields
+        if schema.client_id is None:
+            raise ValueError("client_id is required")
+        if schema.bill_id is None:
+            raise ValueError("bill_id is required")
+        if schema.total is None:
+            raise ValueError("total is required")
+        if schema.delivery_method is None:
+            raise ValueError("delivery_method is required")
+        
         # Validate client exists
         try:
             self._client_repository.find(schema.client_id)
@@ -60,6 +70,11 @@ class OrderService(BaseServiceImpl):
         if schema.date is None:
             schema.date = datetime.utcnow()
 
+        # Set default status if not provided
+        if schema.status is None:
+            from models.enums import Status
+            schema.status = Status.PENDING
+
         # Create order
         logger.info(f"Creating order for client {schema.client_id}")
         return super().save(schema)
@@ -70,13 +85,14 @@ class OrderService(BaseServiceImpl):
 
         Args:
             id_key: Order ID
-            schema: Updated order data
+            schema: Updated order data (partial updates allowed)
 
         Returns:
             Updated order
 
         Raises:
             InstanceNotFoundError: If order, client, or bill doesn't exist
+            ValueError: If validation fails
         """
         # Validate client exists if being updated
         if schema.client_id is not None:
@@ -93,6 +109,10 @@ class OrderService(BaseServiceImpl):
             except InstanceNotFoundError:
                 logger.error(f"Bill with id {schema.bill_id} not found")
                 raise InstanceNotFoundError(f"Bill with id {schema.bill_id} not found")
+
+        # Validate total if provided
+        if schema.total is not None and schema.total < 0:
+            raise ValueError("total must be >= 0")
 
         logger.info(f"Updating order {id_key}")
         return super().update(id_key, schema)
