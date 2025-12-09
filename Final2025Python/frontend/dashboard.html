@@ -102,8 +102,25 @@
       <p>Bienvenido a tu panel de control</p>
     </div>
 
-    <div id="dashboardContent">
-      <div class="loading">Cargando...</div>
+    <div class="dashboard-grid">
+      <!-- Card para la información del perfil -->
+      <div id="profileContainer" class="dashboard-card">
+        <h3>Mis Datos</h3>
+        <div class="profile-info">
+          <p><strong>Nombre:</strong> <span id="profileName">...</span></p>
+          <p><strong>Apellido:</strong> <span id="profileLastname">...</span></p>
+          <p><strong>Email:</strong> <span id="profileEmail">...</span></p>
+          <p><strong>Teléfono:</strong> <span id="profileTelephone">...</span></p>
+        </div>
+      </div>
+
+      <!-- Card para el historial de pedidos -->
+      <div class="dashboard-card">
+        <h3>Mis Pedidos</h3>
+        <div id="ordersContainer">
+          <div class="loading">Cargando pedidos...</div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -21,8 +21,17 @@ class Api {
         try {
             const response = await fetch(url, config);
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ detail: response.statusText }));
-                throw new Error(errorData.detail || 'Error en la petición a la API');
+                const errorData = await response.json().catch(() => ({ detail: `${response.status} ${response.statusText}` }));
+                let errorMessage = 'Error en la petición a la API';
+                if (errorData.detail) {
+                    // Si el detalle es un array (común en errores de validación de FastAPI)
+                    if (Array.isArray(errorData.detail)) {
+                        errorMessage = errorData.detail.map(err => `${err.loc.join(' -> ')}: ${err.msg}`).join('; ');
+                    } else {
+                        errorMessage = errorData.detail;
+                    }
+                }
+                throw new Error(errorMessage);
             }
             if (response.status === 204) { // No Content
                 return null;
@@ -30,7 +39,7 @@ class Api {
             return await response.json();
         } catch (error) {
             console.error(`API Error on ${options.method || 'GET'} ${url}:`, error);
-            throw error;
+            throw error; // Re-lanzamos el error para que el código que llama pueda manejarlo
         }
     }
 

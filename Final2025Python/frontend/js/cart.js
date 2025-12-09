@@ -53,7 +53,7 @@ function addToCart(a, b, c) {
   }
 
   saveCart();
-  showAddToCartAlert(productName);
+  showAddToCartAlert(`${productName} agregado al carrito`, 'success');
 }
 
 // Remove item from cart
@@ -219,7 +219,7 @@ function hideCart() {
 }
 
 // Show add to cart alert
-function showAddToCartAlert(productName) {
+function showAddToCartAlert(message, type = 'success') {
   // Remove existing alerts
   const existingAlerts = document.querySelectorAll('.cart-alert');
   existingAlerts.forEach(alert => alert.remove());
@@ -227,12 +227,21 @@ function showAddToCartAlert(productName) {
   // Create new alert
   const alert = document.createElement('div');
   alert.className = 'cart-alert';
-  alert.textContent = `✅ ${productName} agregado al carrito`;
+  alert.textContent = message;
+
+  const colors = {
+    success: '#4CAF50', // Verde
+    error: '#f44336',   // Rojo
+    info: '#2196F3'     // Azul
+  };
+  const icon = type === 'success' ? '✅' : '❌';
+  alert.textContent = `${icon} ${message}`;
+
   alert.style.cssText = `
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #4CAF50;
+    background: ${colors[type] || colors.info};
     color: white;
     padding: 12px 20px;
     border-radius: 4px;
@@ -291,16 +300,97 @@ document.addEventListener('DOMContentLoaded', function() {
     clearBtn.addEventListener('click', clearCart);
   }
 
-  // Checkout button (placeholder)
+  // Checkout button
   const checkoutBtn = document.getElementById('btnCheckout');
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', function() {
+    checkoutBtn.addEventListener('click', async function() {
       if (cart.length === 0) {
-        alert('El carrito está vacío');
+        showAddToCartAlert('El carrito está vacío', 'error');
         return;
       }
-      alert('Funcionalidad de checkout en desarrollo...');
-      // Aquí irá la lógica de checkout
+
+      // Verificar si el usuario está logueado
+      if (!window.authManager || !window.authManager.isLoggedIn()) {
+        hideCart(); // Ocultamos el modal del carrito
+        showAddToCartAlert('Debes iniciar sesión para comprar', 'error');
+        // Mostramos el modal de login
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) loginModal.style.display = 'block';
+        return;
+      }
+
+      const currentUser = window.authManager.getCurrentUser();
+
+      try {
+        const api = new Api(); 
+
+        // --- INICIO: Verificación de stock ---
+        const products = await api.get('/products/?skip=0&limit=1000'); // Obtenemos los productos
+        const productsMap = new Map(products.map(p => [p.id_key, p]));
+
+        const stockErrors = [];
+        for (const item of cart) {
+          const productInDb = productsMap.get(item.id);
+          if (!productInDb) {
+            stockErrors.push(`El producto "${item.name}" ya no está disponible.`);
+          } else if (item.quantity > productInDb.stock) {
+            stockErrors.push(`No hay stock suficiente para "${item.name}". Disponible: ${productInDb.stock}, en tu carrito: ${item.quantity}.`);
+          }
+        }
+
+        if (stockErrors.length > 0) {
+          // Mostramos todos los errores de stock encontrados
+          showAddToCartAlert(stockErrors.join(' '), 'error');
+          hideCart(); // Opcional: ocultar el carrito para que vea la alerta
+          return; // Detenemos la compra
+        }
+        // --- FIN: Verificación de stock ---
+
+        // 1. Crear la factura
+        const billData = {
+          client_id: currentUser.id_key,
+          total: getCartTotalPrice(),
+          bill_number: `B-${Date.now()}`, // Generamos un número de factura simple y único
+          date: new Date().toISOString().split('T')[0],   // Usamos la fecha actual en formato YYYY-MM-DD
+          payment_type: 1                   // Asumimos 1 como un tipo de pago válido (ej: Tarjeta)
+        };
+        const createdBill = await api.post('/bills/', billData);
+
+        // 2. Crear la orden
+        const orderData = {
+          client_id: currentUser.id_key,
+          total: getCartTotalPrice(),
+          status: 1, // 1: Pendiente
+          delivery_method: 1, // 1: Pickup
+          date: new Date().toISOString(),
+          bill_id: createdBill.id_key
+          // Se elimina order_details de aquí, se crearán por separado.
+        };
+        const createdOrder = await api.post('/orders/', orderData);
+        
+        // 3. Crear cada OrderDetail por separado
+        const orderId = createdOrder.id ?? createdOrder.id_key;
+        for (const item of cart) {
+          const detailData = {
+            order_id: orderId,
+            product_id: item.id,
+            quantity: item.quantity,
+            price: item.price
+          };
+          await api.post('/order_details/', detailData);
+        }
+        
+        showAddToCartAlert(`¡Compra #${orderId} realizada con éxito!`, 'success');
+        
+        // Limpiar carrito y actualizar UI
+        cart = [];
+        saveCart();
+        showCart(); // Refresca el modal del carrito para mostrarlo vacío
+
+      } catch (error) {
+        console.error('Error al crear la orden:', error);
+        showAddToCartAlert('Error al procesar la compra. Inténtalo de nuevo.', 'error');
+      }
     });
   }
 });

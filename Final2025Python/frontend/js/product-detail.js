@@ -253,17 +253,20 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageSrc = product.image_url;
             if (imageSrc && imageSrc.startsWith('/frontend/')) imageSrc = imageSrc.replace('/frontend/', '/');
 
+            const isOutOfStock = product.stock <= 0;
+
             return `
-                <div class="recommendation-card">
+                <div class="recommendation-card ${isOutOfStock ? 'out-of-stock' : ''}">
                     <img src="${imageSrc || '/images/placeholder.svg'}" alt="${escapeHtml(product.name)}" class="recommendation-image" onerror="this.src='/images/placeholder.svg'">
                     <div class="recommendation-info">
                         <div class="recommendation-name">${escapeHtml(product.name)}</div>
                         <div class="recommendation-price">$${price.toFixed(2)}</div>
                         <div class="recommendation-actions">
                             <a href="product-detail.html?id=${product.id}" class="btn btn-view-detail">Ver Detalle</a>
-                            <button class="btn btn-add-recommendation" data-product-id="${product.id}" data-product-name="${escapeHtml(product.name)}" data-product-price="${price}">
-                                Agregar
-                            </button>
+                            ${!isOutOfStock
+                                ? `<button class="btn btn-add-recommendation" data-product-id="${product.id}" data-product-name="${escapeHtml(product.name)}" data-product-price="${price}">Agregar</button>`
+                                : `<button class="btn btn-disabled" disabled>Sin Stock</button>`
+                            }
                         </div>
                     </div>
                 </div>
@@ -285,6 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------
     // Init
     // ----------------------------
+    // Añade este estilo al head para el borde rojo
+    const style = document.createElement('style');
+    style.textContent = ` 
+        .out-of-stock {
+            border: 2px solid var(--color-error, #f44336) !important;
+        }
+    `;
+    document.head.appendChild(style);
     const init = async () => {
         updateCartCount();
         updateCartDisplay();

@@ -60,6 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const productCard = document.createElement('div');
       productCard.className = 'product-card card';
 
+      if (product.stock <= 0) {
+        productCard.classList.add('out-of-stock');
+      }
+
       // avoid crashing when price is not number
       const price = Number(product.price) || 0;
 
@@ -68,9 +72,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="product-title">${escapeHtml(product.name)}</div>
         <div class="product-price price">$${price.toFixed(2)}</div>
         <a href="product-detail.html?id=${product.id ?? product.id_key}" class="btn btn-secondary">Mostrar detalle</a>
-        <button class="btn btn-primary btn-add-cart" data-product-id="${product.id ?? product.id_key}">
-          Agregar al carrito
-        </button>
+        ${product.stock > 0
+          ? `<button class="btn btn-primary btn-add-cart" data-product-id="${product.id ?? product.id_key}">Agregar al carrito</button>`
+          : `<button class="btn btn-disabled" disabled>Sin Stock</button>`
+        }
       `;
 
       productsGrid.appendChild(productCard);
