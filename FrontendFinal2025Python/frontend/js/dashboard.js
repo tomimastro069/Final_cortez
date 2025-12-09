@@ -95,12 +95,15 @@ async function loadOrders(client_id) {
 
 function displayOrders(orders) {
   const container = document.getElementById('ordersContainer');
-  if (!container) return; // Salir si el contenedor no existe
+  if (!container) return;
 
   if (!orders || orders.length === 0) {
     container.innerHTML = '<p>No tienes pedidos aún.</p>';
     return;
   }
+
+  // Ordenar los pedidos por fecha ASC para numerarlos correctamente
+  orders.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const statusMap = {
     1: { text: 'Pendiente', className: 'pending' },
@@ -110,26 +113,28 @@ function displayOrders(orders) {
   };
   const defaultStatus = { text: 'Desconocido', className: 'unknown' };
 
-  const ordersHtml = orders.map(order => {
-    // Usamos order.id_key si order.id no está presente
-    const orderId = order.id ?? order.id_key;
+  const ordersHtml = orders.map((order, index) => {
+    const realOrderId = order.id ?? order.id_key;
+    const displayOrderNumber = index + 1; // << ESTE ES EL NUEVO NÚMERO
     const statusInfo = statusMap[order.status] || defaultStatus;
+
     return `
-    <div class="order-item" data-order-id="${orderId}">
-      <div class="order-header">
-        <span><strong>Pedido #${orderId}</strong></span>
-        <span class="order-status status-${statusInfo.className}">${statusInfo.text}</span>
-        <button class="toggle-details-btn">Ver detalles</button>
+      <div class="order-item" data-order-id="${realOrderId}">
+        <div class="order-header">
+          <span><strong>Pedido #${displayOrderNumber}</strong></span>
+          <span class="order-status status-${statusInfo.className}">${statusInfo.text}</span>
+          <button class="toggle-details-btn">Ver detalles</button>
+        </div>
+        <p>Total: $${(order.total ?? 0).toFixed(2)}</p>
+        <p>Fecha: ${new Date(order.date).toLocaleDateString()}</p>
+        <div class="order-details-content" style="display: none;">
+          <div class="details-loading">Cargando detalles...</div>
+          <p>Método de envío: ${order.delivery_method === 1 ? 'Recogida' : 'Envío'}</p>
+          <p>Número de factura: ${order.bill_id}</p>
+        </div>
       </div>
-      <p>Total: $${(order.total ?? 0).toFixed(2)}</p>
-      <p>Fecha: ${new Date(order.date).toLocaleDateString()}</p>
-      <div class="order-details-content" style="display: none;">
-        <div class="details-loading">Cargando detalles...</div>
-        <p>Método de envío: ${order.delivery_method === 1 ? 'Recogida' : 'Envío'}</p>
-        <p>Número de factura: ${order.bill_id}</p>
-      </div>
-    </div>
-  `}).join('');
+    `;
+  }).join('');
 
   container.innerHTML = `<ul class="orders-list">${ordersHtml}</ul>`;
 }
