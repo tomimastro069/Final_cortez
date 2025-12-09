@@ -19,8 +19,8 @@ class BillSchema(BaseSchema):
     date: DateType = Field(..., description="Bill date (required)")
     total: float = Field(..., ge=0, description="Total amount (must be >= 0, required)")
     payment_type: PaymentType = Field(..., description="Payment type (required)")
-    client_id: int = Field(..., description="Client ID reference (required)")  # ✅ Added
+    client_id: int = Field(..., description="Client ID reference (required)")
 
     # Relationships
-    order: Optional['OrderSchema'] = None
-    client: Optional['ClientSchema'] = None  # ✅ Added
+    order: Optional["OrderSchema"] = None
+    client: Optional["ClientSchema"] = None

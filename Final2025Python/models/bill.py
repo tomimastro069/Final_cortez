@@ -13,8 +13,8 @@ class BillModel(BaseModel):
     date = Column(Date)
     total = Column(Float)
     payment_type = Column(Enum(PaymentType))
-    client_id = Column(Integer, ForeignKey('clients.id_key'), index=True)  # ✅ Added
+    client_id = Column(Integer, ForeignKey('clients.id_key'), index=True)
 
     # Relationships
     order = relationship('OrderModel', back_populates='bill', uselist=False, lazy="select")
-    client = relationship('ClientModel', back_populates='bills', lazy="select")  # ✅ Added
+    client = relationship('ClientModel', back_populates='bills', lazy="select")
