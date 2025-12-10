@@ -130,8 +130,9 @@ def create_fastapi_app() -> FastAPI:
 def run_app(fastapi_app: FastAPI):
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
 
+create_tables()
+app = create_fastapi_app()
 
 if __name__ == "__main__":
-    create_tables()
-    app = create_fastapi_app()
+    import uvicorn
     run_app(app)
