@@ -104,9 +104,7 @@ def create_fastapi_app() -> FastAPI:
     async def startup_event():
         logger.info("🚀 Starting FastAPI E-commerce API...")
 
-        # RUN ALEMBIC MIGRATIONS HERE 🔥🔥🔥
-        run_migrations()
-
+        create_tables()
         if check_redis_connection():
             logger.info("✅ Redis cache available")
         else:
