@@ -138,14 +138,6 @@ def run_app(fastapi_app: FastAPI):
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
 
 
-router = APIRouter()
-
-@router.get("/debug/tables")
-def debug_tables():
-    inspector = inspect(engine)
-    return {"tables": inspector.get_table_names()}
-
-
 app = create_fastapi_app()
 
 if __name__ == "__main__":
