@@ -82,14 +82,18 @@ def get_db() -> Generator[Session, None, None]:
 
 
 def create_tables():
-    """Create all tables in the database."""
+    """Drop old tables and create all tables in the database."""
     try:
+        with engine.begin() as conn:
+            # BORRAR tablas viejas solo de las problemáticas
+            conn.execute(text("DROP TABLE IF EXISTS addresses CASCADE;"))
+            conn.execute(text("DROP TABLE IF EXISTS clients CASCADE;"))
+        # CREAR todas las tablas nuevas
         base.metadata.create_all(engine)
-        logger.info("Tables created successfully.")
+        logger.info("✅ Tables created successfully")
     except Exception as e:
         logger.error(f"Error creating tables: {e}")
         raise
-
 
 def drop_database():
     """Drop all tables in the database."""
