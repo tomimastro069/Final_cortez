@@ -12,17 +12,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette import status
 from starlette.responses import JSONResponse
 
-# Import logging BEFORE calling it
+# ---- LOGGING ----
 from config.logging_config import setup_logging
-
-# Set up centralized logging FIRST
 setup_logging()
 logger = logging.getLogger(__name__)
 
-# Import schemas BEFORE controllers
+# ---- ALEMBIC (IMPORTS FALTANTES 🧨) ----
+from alembic.config import Config
+from alembic import command
+
+# ---- SCHEMAS ----
 import schemas
 
-# Controllers
+# ---- CONTROLLERS ----
 from controllers.address_controller import AddressController
 from controllers.bill_controller import BillController
 from controllers.category_controller import CategoryController
@@ -33,21 +35,27 @@ from controllers.product_controller import ProductController
 from controllers.review_controller import ReviewController
 from controllers.health_check import router as health_check_controller
 
-# Config
+# ---- CONFIG ----
 from config.database import create_tables, engine
 from config.redis_config import redis_config, check_redis_connection
 
-# Middleware
+# ---- MIDDLEWARE ----
 from middleware.rate_limiter import RateLimiterMiddleware
 from middleware.request_id_middleware import RequestIDMiddleware
 
-# Exceptions
+# ---- EXCEPTIONS ----
 from repositories.base_repository_impl import InstanceNotFoundError
 
+def run_migrations():
+    logger.info("📦 Running Alembic migrations...")
+    alembic_cfg = Config("alembic.ini")
+    alembic_cfg.set_main_option("script_location", "alembic")
+    command.upgrade(alembic_cfg, "head")
+    logger.info("✅ Alembic migrations completed.")
 
+
+# ==========================================================
 def create_fastapi_app() -> FastAPI:
-    """Create and configure the FastAPI application."""
-
     fastapi_app = FastAPI(
         title="E-commerce REST API",
         description="FastAPI REST API for e-commerce system with PostgreSQL",
@@ -76,31 +84,28 @@ def create_fastapi_app() -> FastAPI:
     fastapi_app.include_router(health_check_controller, prefix="/health_check")
 
     # ----- Middleware -----
-    origins = [
-        "http://localhost:3000",
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-    ]
-
     fastapi_app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # 🔹 Permite cualquier origen
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-    logger.info(f"✅ CORS enabled: {origins}")
+        CORSMiddleware,
+        allow_origins=["*"],  
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    logger.info("✅ CORS enabled")
 
     fastapi_app.add_middleware(RequestIDMiddleware)
     logger.info("✅ Request ID middleware enabled")
 
     fastapi_app.add_middleware(RateLimiterMiddleware, calls=100, period=60)
-    logger.info("✅ Rate limiting enabled: 100 req / 60s")
+    logger.info("✅ Rate limiting middleware enabled")
 
     # ----- Startup -----
     @fastapi_app.on_event("startup")
     async def startup_event():
         logger.info("🚀 Starting FastAPI E-commerce API...")
+
+        # RUN ALEMBIC MIGRATIONS HERE 🔥🔥🔥
+        run_migrations()
 
         if check_redis_connection():
             logger.info("✅ Redis cache available")
@@ -127,13 +132,12 @@ def create_fastapi_app() -> FastAPI:
     return fastapi_app
 
 
+# ==========================================================
 def run_app(fastapi_app: FastAPI):
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
 
-# Create tables is disabled because Alembic handles database schema management.
-# create_tables()
+
 app = create_fastapi_app()
 
 if __name__ == "__main__":
-    import uvicorn
     run_app(app)
