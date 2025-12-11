@@ -5,9 +5,10 @@ Initializes app, routers, exception handlers and logging.
 
 import logging
 import os
+from sqlalchemy import inspect
 import uvicorn
 
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette import status
 from starlette.responses import JSONResponse
@@ -133,6 +134,14 @@ def create_fastapi_app() -> FastAPI:
 # ==========================================================
 def run_app(fastapi_app: FastAPI):
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
+
+
+router = APIRouter()
+
+@router.get("/debug/tables")
+def debug_tables():
+    inspector = inspect(engine)
+    return {"tables": inspector.get_table_names()}
 
 
 app = create_fastapi_app()
