@@ -83,9 +83,11 @@ def create_fastapi_app() -> FastAPI:
     fastapi_app.include_router(ReviewController().router, prefix="/reviews")
     fastapi_app.include_router(CategoryController().router, prefix="/categories")
     fastapi_app.include_router(health_check_controller, prefix="/health_check")
+    from debug_router import router as debug_router # type: ignore
+    fastapi_app.include_router(debug_router)
 
     # ----- Middleware -----
-    fastapi_app.add_middleware(
+    fastapi_app.add_middleware(     
         CORSMiddleware,
         allow_origins=["*"],  
         allow_credentials=True,
