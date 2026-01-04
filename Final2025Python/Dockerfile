@@ -25,7 +25,8 @@ FROM python:3.11.6-slim-bullseye
 # Set environment variables for production
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PATH=/root/.local/bin:$PATH
+    PATH=/root/.local/bin:$PATH \
+    PYTHONPATH=/root/.local/lib/python3.11/site-packages
 
 # Install runtime dependencies (libpq5 for PostgreSQL, curl for health checks)
 RUN apt-get update && apt-get install -y --no-install-recommends \
