@@ -3,7 +3,7 @@ from typing import Optional, TYPE_CHECKING
 from pydantic import Field
 
 from schemas.base_schema import BaseSchema
-from schemas.product_schema import ProductBaseSchema  # ← CAMBIO CLAVE
+from schemas.product_schema import ProductBaseSchema
 
 if TYPE_CHECKING:
     from schemas.order_schema import OrderSchema
@@ -35,6 +35,4 @@ class OrderDetailSchema(BaseSchema):
     )
 
     order: Optional['OrderSchema'] = None
-    # ✅ CAMBIO: Usar ProductBaseSchema en lugar de ProductSchema
-    # Esto rompe el ciclo: CategorySchema → ProductSchema → OrderDetailSchema → ProductSchema
     product: Optional[ProductBaseSchema] = None

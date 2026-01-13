@@ -7,7 +7,7 @@ from schemas.category_schema import CategoryBaseSchema
 
 if TYPE_CHECKING:
     from schemas.order_detail_schema import OrderDetailSchema
-    from schemas.review_schema import ReviewSchema
+    from schemas.review_schema import ReviewBaseSchema
 
 
 class ProductBaseSchema(BaseSchema):
@@ -29,7 +29,7 @@ class ProductSchema(ProductBaseSchema):
     # ✅ CAMBIO CRÍTICO: Configurar para evitar ciclos en order_details
     model_config = ConfigDict(from_attributes=True)
 
-    reviews: Optional[List['ReviewSchema']] = []
+    reviews: Optional[List['ReviewBaseSchema']] = []
     order_details: Optional[List['OrderDetailSchema']] = []
 
 
