@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Boolean
 from sqlalchemy.orm import relationship
 
 from models.base_model import BaseModel
@@ -12,6 +12,7 @@ class ClientModel(BaseModel):
     email = Column(String, unique=True, index=True)
     telephone = Column(String)
     password = Column(String)
+    is_admin = Column(Boolean, default=False)
 
     addresses = relationship("AddressModel", back_populates="client", cascade="all, delete-orphan", lazy="select")
     orders = relationship("OrderModel", back_populates="client", lazy="select")
