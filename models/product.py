@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 from models.base_model import BaseModel
 
-
+                                                                                   
 class ProductModel(BaseModel):
     """
     Class representing a product in the database.

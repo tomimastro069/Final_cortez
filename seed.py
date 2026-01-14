@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 Seed script to create admin user.
+Usa DATABASE_URL para producción.
 """
 
-import sys
 import os
+import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from config.database import SessionLocal
@@ -13,12 +14,15 @@ from services.client_service import ClientService
 from schemas.client_schema import ClientSchema
 
 def seed_admin():
+    database_url = os.getenv("DATABASE_URL")
+    if not database_url:
+        raise RuntimeError("❌ DATABASE_URL no está configurada")
+
     session = SessionLocal()
 
     try:
         exists = (
-            session
-            .query(ClientModel)
+            session.query(ClientModel)
             .filter(ClientModel.email == "admin@techstore.com")
             .first()
         )
@@ -47,6 +51,7 @@ def seed_admin():
         print(f"❌ Error creando admin: {e}")
     finally:
         session.close()
+
 
 if __name__ == "__main__":
     seed_admin()

@@ -1,32 +1,28 @@
 #!/usr/bin/env python3
 """
-Seed script to populate the database with sample products for testing search functionality.
+Seed script to populate the database with sample products for testing.
+Usa DATABASE_URL para producción.
 """
 
-import sys
 import os
+import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-# Solo para ejecución local contra Docker
-os.environ.setdefault("POSTGRES_HOST", "localhost")
-os.environ.setdefault("POSTGRES_DB", "postgres")
 
 from config.database import SessionLocal
 from models.product import ProductModel
 from models.category import CategoryModel
 
 def seed_products():
+    # Revisar variable de entorno de producción
+    database_url = os.getenv("DATABASE_URL")
+    if not database_url:
+        raise RuntimeError("❌ DATABASE_URL no está configurada")
+
     session = SessionLocal()
 
     try:
         # ---------- CATEGORIES ----------
-        category_names = [
-            "Laptops",
-            "Smartphones",
-            "Tablets",
-            "Accesorios"
-        ]
-
+        category_names = ["Laptops", "Smartphones", "Tablets", "Accesorios"]
         categories = {}
 
         for name in category_names:
@@ -80,9 +76,9 @@ def seed_products():
     except Exception as e:
         session.rollback()
         print(f"❌ Error poblando la base de datos: {e}")
-
     finally:
         session.close()
+
 
 if __name__ == "__main__":
     seed_products()
