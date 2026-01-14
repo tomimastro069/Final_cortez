@@ -1,14 +1,9 @@
-"""
-Main application module for FastAPI e-commerce REST API.
-Initializes app, routers, exception handlers and logging.
-"""
-
 import logging
 import os
-from sqlalchemy import inspect
+from sqlalchemy.orm import Session
 import uvicorn
 
-from fastapi import APIRouter, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette import status
 from starlette.responses import JSONResponse
@@ -18,7 +13,7 @@ from config.logging_config import setup_logging
 setup_logging()
 logger = logging.getLogger(__name__)
 
-# ---- ALEMBIC (IMPORTS FALTANTES 🧨) ----
+# ---- ALEMBIC ----
 from alembic.config import Config
 from alembic import command
 
@@ -37,8 +32,11 @@ from controllers.review_controller import ReviewController
 from controllers.health_check import router as health_check_controller
 
 # ---- CONFIG ----
-from config.database import create_tables, engine
+from config.database import engine, SessionLocal
 from config.redis_config import redis_config, check_redis_connection
+from models.client import ClientModel
+from services.client_service import ClientService
+from schemas.client_schema import ClientSchema
 
 # ---- MIDDLEWARE ----
 from middleware.rate_limiter import RateLimiterMiddleware
@@ -47,6 +45,7 @@ from middleware.request_id_middleware import RequestIDMiddleware
 # ---- EXCEPTIONS ----
 from repositories.base_repository_impl import InstanceNotFoundError
 
+# ------------------------------------------------
 def run_migrations():
     logger.info("📦 Running Alembic migrations...")
     alembic_cfg = Config("alembic.ini")
@@ -54,8 +53,34 @@ def run_migrations():
     command.upgrade(alembic_cfg, "head")
     logger.info("✅ Alembic migrations completed.")
 
+# ------------------------------------------------
+def create_admin_if_missing():
+    session: Session = SessionLocal()
+    try:
+        exists = session.query(ClientModel).filter_by(email="admin@techstore.com").first()
+        if exists:
+            logger.info("✅ Admin already exists")
+            return
 
-# ==========================================================
+        admin_data = ClientSchema(
+            name="Admin",
+            lastname="TechStore",
+            email="admin@techstore.com",
+            telephone="+549123456789",
+            password="admin123",
+            is_admin=True
+        )
+        service = ClientService(session)
+        service.save(admin_data)
+        session.commit()
+        logger.info("✅ Admin created successfully: admin@techstore.com")
+    except Exception as e:
+        session.rollback()
+        logger.error(f"❌ Error creating admin: {e}")
+    finally:
+        session.close()
+
+# ------------------------------------------------
 def create_fastapi_app() -> FastAPI:
     fastapi_app = FastAPI(
         title="E-commerce REST API",
@@ -65,7 +90,7 @@ def create_fastapi_app() -> FastAPI:
         redoc_url="/redoc"
     )
 
-    # ----- Exception Handlers -----
+    # Exception handlers
     @fastapi_app.exception_handler(InstanceNotFoundError)
     async def instance_not_found_exception_handler(request, exc):
         return JSONResponse(
@@ -73,7 +98,7 @@ def create_fastapi_app() -> FastAPI:
             content={"message": str(exc)},
         )
 
-    # ----- Controllers -----
+    # Controllers
     fastapi_app.include_router(ClientController().router, prefix="/api/v1/clients")
     fastapi_app.include_router(OrderController().router, prefix="/orders")
     fastapi_app.include_router(ProductController().router, prefix="/products")
@@ -83,13 +108,13 @@ def create_fastapi_app() -> FastAPI:
     fastapi_app.include_router(ReviewController().router, prefix="/reviews")
     fastapi_app.include_router(CategoryController().router, prefix="/categories")
     fastapi_app.include_router(health_check_controller, prefix="/health_check")
-    from debug_router import router as debug_router # type: ignore
+    from debug_router import router as debug_router  # type: ignore
     fastapi_app.include_router(debug_router)
 
-    # ----- Middleware -----
-    fastapi_app.add_middleware(     
+    # Middleware
+    fastapi_app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  
+        allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -102,18 +127,23 @@ def create_fastapi_app() -> FastAPI:
     fastapi_app.add_middleware(RateLimiterMiddleware, calls=100, period=60)
     logger.info("✅ Rate limiting middleware enabled")
 
-    # ----- Startup -----
+    # Startup
     @fastapi_app.on_event("startup")
     async def startup_event():
         logger.info("🚀 Starting FastAPI E-commerce API...")
 
-        create_tables()
+        # Run migrations first
+        run_migrations()
+
+        # Create admin if missing
+        create_admin_if_missing()
+
         if check_redis_connection():
             logger.info("✅ Redis cache available")
         else:
             logger.warning("⚠️ Redis NOT available")
 
-    # ----- Shutdown -----
+    # Shutdown
     @fastapi_app.on_event("shutdown")
     async def shutdown_event():
         logger.info("👋 Shutting down API...")
@@ -132,13 +162,8 @@ def create_fastapi_app() -> FastAPI:
 
     return fastapi_app
 
-
-# ==========================================================
-def run_app(fastapi_app: FastAPI):
-    uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
-
-
+# ------------------------------------------------
 app = create_fastapi_app()
 
 if __name__ == "__main__":
-    run_app(app)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
