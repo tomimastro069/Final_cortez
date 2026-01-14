@@ -1,10 +1,9 @@
-from sqlalchemy import Column, Float, ForeignKey, Integer
+from sqlalchemy import Column, Float, ForeignKey, Integer, PrimaryKeyConstraint
 from sqlalchemy.orm import relationship
+from models.base_model import base
 
-from models.base_model import BaseModel
 
-
-class OrderDetailModel(BaseModel):
+class OrderDetailModel(base):
     __tablename__ = "order_details"
 
     quantity = Column(Integer)
@@ -14,3 +13,7 @@ class OrderDetailModel(BaseModel):
 
     order = relationship("OrderModel", back_populates="order_details", lazy="select")
     product = relationship("ProductModel", back_populates="order_details", lazy="select")
+
+    __table_args__ = (
+        PrimaryKeyConstraint('order_id', 'product_id'),
+    )
