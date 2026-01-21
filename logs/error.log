@@ -3094,3 +3094,37 @@ reviews.1.product
 2026-01-14 00:23:05 - services.cache_service - ERROR - error:188 - Cache SET error for key 'products:filter:category_id::in_stock_only:False:limit:100:max_price::min_price::search::skip:0:sort_by:': Object of type datetime is not JSON serializable
 2026-01-14 00:23:07 - services.cache_service - ERROR - error:188 - Cache SET error for key 'products:id:id:35': Object of type datetime is not JSON serializable
 2026-01-14 00:23:07 - services.cache_service - ERROR - error:188 - Cache SET error for key 'products:filter:category_id:11:in_stock_only:False:limit:100:max_price::min_price::search::skip:0:sort_by:': Object of type datetime is not JSON serializable
+2026-01-19 00:57:23 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:27:19 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:34:23 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:47:55 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 19:16:30 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.errors.UndefinedTable) relation "clients" does not exist
+LINE 2: FROM clients 
+             ^
+
+[SQL: SELECT clients.name AS clients_name, clients.lastname AS clients_lastname, clients.email AS clients_email, clients.telephone AS clients_telephone, clients.password AS clients_password, clients.is_admin AS clients_is_admin, clients.id_key AS clients_id_key 
+FROM clients 
+WHERE clients.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@techstore.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)

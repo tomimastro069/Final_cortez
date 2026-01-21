@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 import logging
 import os
 from sqlalchemy.orm import Session
@@ -81,13 +82,49 @@ def create_admin_if_missing():
         session.close()
 
 # ------------------------------------------------
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Context manager to handle application startup and shutdown events.
+    """
+    logger.info("🚀 Starting FastAPI E-commerce API...")
+
+    # Create admin if missing
+    create_admin_if_missing()
+
+    if check_redis_connection():
+        logger.info("✅ Redis cache available")
+    else:
+        logger.warning("⚠️ Redis NOT available")
+
+    yield
+
+    logger.info("👋 Shutting down API...")
+
+    try:
+        redis_config.close()
+    except Exception as e:
+        logger.error(f"❌ Error closing Redis: {e}")
+
+    try:
+        engine.dispose()
+    except Exception as e:
+        logger.error(f"❌ Error disposing DB engine: {e}")
+
+    logger.info("✅ Shutdown complete")
+
+
 def create_fastapi_app() -> FastAPI:
+    """
+    Creates and configures a FastAPI application instance.
+    """
     fastapi_app = FastAPI(
         title="E-commerce REST API",
         description="FastAPI REST API for e-commerce system with PostgreSQL",
         version="1.0.0",
         docs_url="/docs",
-        redoc_url="/redoc"
+        redoc_url="/redoc",
+        lifespan=lifespan
     )
 
     # Exception handlers
@@ -126,39 +163,6 @@ def create_fastapi_app() -> FastAPI:
 
     fastapi_app.add_middleware(RateLimiterMiddleware, calls=100, period=60)
     logger.info("✅ Rate limiting middleware enabled")
-
-    # Startup
-    @fastapi_app.on_event("startup")
-    async def startup_event():
-        logger.info("🚀 Starting FastAPI E-commerce API...")
-
-        # Run migrations first
-        run_migrations()
-
-        # Create admin if missing
-        create_admin_if_missing()
-
-        if check_redis_connection():
-            logger.info("✅ Redis cache available")
-        else:
-            logger.warning("⚠️ Redis NOT available")
-
-    # Shutdown
-    @fastapi_app.on_event("shutdown")
-    async def shutdown_event():
-        logger.info("👋 Shutting down API...")
-
-        try:
-            redis_config.close()
-        except Exception as e:
-            logger.error(f"❌ Error closing Redis: {e}")
-
-        try:
-            engine.dispose()
-        except Exception as e:
-            logger.error(f"❌ Error disposing DB engine: {e}")
-
-        logger.info("✅ Shutdown complete")
 
     return fastapi_app
 

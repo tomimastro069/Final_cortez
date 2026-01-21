@@ -56,6 +56,7 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
 
       # Database connection pool (development defaults)
       DB_POOL_SIZE: 5
@@ -86,6 +87,8 @@ services:
       # Python optimizations
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
+    # Ejecutar migraciones antes de iniciar la app
+    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     ports:
       - "8000:8000"
     volumes:
@@ -99,7 +102,7 @@ services:
     networks:
       - ecommerce_network_dev
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health_check"]
+      test: ["CMD", "curl", "-f", "-L", "http://localhost:8000/health_check"]
       interval: 30s
       timeout: 10s
       retries: 3

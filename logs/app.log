@@ -30909,3 +30909,623 @@ reviews.1.product
 2026-01-14 00:31:33 - config.redis_config - INFO - close:103 - Redis connection closed
 2026-01-14 00:31:33 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
 2026-01-14 00:31:33 - __main__ - INFO - shutdown_event:131 - ✅ Shutdown complete
+2026-01-18 21:28:52 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:37:56 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:00 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:09 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:11 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:14 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:18 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:24 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:33 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:38:48 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:39:17 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:40:09 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:41:08 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:42:09 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:09 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:28 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:31 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:33 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:35 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:39 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:42 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:48 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:43:56 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:44:11 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:44:37 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:45:29 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:46:29 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:31 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:32 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:33 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:33 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:33 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:33 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:33 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:33 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:35 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:35 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:36 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:36 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:36 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:36 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:36 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:36 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:38 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:39 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:39 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:39 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:39 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:39 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:39 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:39 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:41 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:41 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:41 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:41 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:41 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:41 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:41 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:41 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:44 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:44 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:45 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:45 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:45 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:45 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:45 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:45 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:48 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:49 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:49 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:49 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:49 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:49 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:50 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:50 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:47:55 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:47:55 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:47:56 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:47:56 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:47:56 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:47:56 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:47:56 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:47:56 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:48:04 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:48:05 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:48:05 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:48:05 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:48:05 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:48:05 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:48:05 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:48:05 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:48:19 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:48:20 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:48:20 - __main__ - INFO - create_fastapi_app:122 - ✅ CORS enabled
+2026-01-19 00:48:20 - __main__ - INFO - create_fastapi_app:125 - ✅ Request ID middleware enabled
+2026-01-19 00:48:20 - __main__ - INFO - create_fastapi_app:128 - ✅ Rate limiting middleware enabled
+2026-01-19 00:48:20 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:48:20 - __main__ - INFO - startup_event:133 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:48:20 - __main__ - INFO - run_migrations:50 - 📦 Running Alembic migrations...
+2026-01-19 00:48:47 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:48:48 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:48:48 - __main__ - INFO - create_fastapi_app:123 - ✅ CORS enabled
+2026-01-19 00:48:48 - __main__ - INFO - create_fastapi_app:126 - ✅ Request ID middleware enabled
+2026-01-19 00:48:48 - __main__ - INFO - create_fastapi_app:129 - ✅ Rate limiting middleware enabled
+2026-01-19 00:48:48 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:48:48 - __main__ - INFO - startup_event:134 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:48:48 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:49:39 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:49:40 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:49:40 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:49:40 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:49:40 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:49:40 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:49:40 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:49:40 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:50:40 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:50:40 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:50:41 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:50:41 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:50:41 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:50:41 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:50:41 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:50:41 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:51:40 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:51:41 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:51:41 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:51:41 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:51:41 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:51:41 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:51:41 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:51:41 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:52:41 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:52:42 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:52:42 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:52:42 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:52:42 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:52:42 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:52:42 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:52:42 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:53:41 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:53:42 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:53:42 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:53:42 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:53:42 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:53:42 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:53:42 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:53:42 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:54:42 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:54:43 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:54:43 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:54:43 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:54:43 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:54:43 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:54:43 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:54:43 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:55:42 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:55:43 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:55:43 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:55:43 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:55:43 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:55:43 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:55:43 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:55:43 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:33 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:34 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:35 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:35 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:35 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:35 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:35 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:35 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:37 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:37 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:38 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:38 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:38 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:38 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:38 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:38 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:40 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:41 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:41 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:41 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:41 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:41 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:41 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:41 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:43 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:44 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:44 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:44 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:44 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:44 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:44 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:44 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:48 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:48 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:49 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:49 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:49 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:49 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:49 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:49 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:51 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:52 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:52 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:52 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:52 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:52 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:52 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:52 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:56:57 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:56:58 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:56:59 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:56:59 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:56:59 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:56:59 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:56:59 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:56:59 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:57:07 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:57:08 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:57:08 - __main__ - INFO - create_fastapi_app:162 - ✅ CORS enabled
+2026-01-19 00:57:08 - __main__ - INFO - create_fastapi_app:165 - ✅ Request ID middleware enabled
+2026-01-19 00:57:08 - __main__ - INFO - create_fastapi_app:168 - ✅ Rate limiting middleware enabled
+2026-01-19 00:57:08 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:57:08 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:57:08 - __main__ - INFO - run_migrations:51 - 📦 Running Alembic migrations...
+2026-01-19 00:57:22 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-19 00:57:22 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-19 00:57:23 - __main__ - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-19 00:57:23 - __main__ - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-19 00:57:23 - __main__ - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-19 00:57:23 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-19 00:57:23 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-19 00:57:23 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-19 00:57:23 - __main__ - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-19 00:57:25 - middleware.request_id_middleware - INFO - dispatch:64 - [98a36279-381b-4297-b9a5-ee3c7b8e0446] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:57:25 - middleware.request_id_middleware - INFO - dispatch:77 - [98a36279-381b-4297-b9a5-ee3c7b8e0446] ← GET /health_check - 307 (2.23ms)
+2026-01-19 00:57:54 - middleware.request_id_middleware - INFO - dispatch:64 - [21a9f750-610a-4625-8bce-d282d18769df] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:57:54 - middleware.request_id_middleware - INFO - dispatch:77 - [21a9f750-610a-4625-8bce-d282d18769df] ← GET /health_check - 307 (1.99ms)
+2026-01-19 00:58:23 - middleware.request_id_middleware - INFO - dispatch:64 - [a307dd2e-8ab2-4dd1-9715-6731da6e6318] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:58:23 - middleware.request_id_middleware - INFO - dispatch:77 - [a307dd2e-8ab2-4dd1-9715-6731da6e6318] ← GET /health_check - 307 (1.86ms)
+2026-01-19 00:58:52 - middleware.request_id_middleware - INFO - dispatch:64 - [f778f921-dc16-4cc8-986f-fb4cb3969d80] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:58:52 - middleware.request_id_middleware - INFO - dispatch:77 - [f778f921-dc16-4cc8-986f-fb4cb3969d80] ← GET /health_check - 307 (1.79ms)
+2026-01-19 00:59:21 - middleware.request_id_middleware - INFO - dispatch:64 - [4026b2c8-da1a-42c6-b4cc-232c1969ee20] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:59:21 - middleware.request_id_middleware - INFO - dispatch:77 - [4026b2c8-da1a-42c6-b4cc-232c1969ee20] ← GET /health_check - 307 (2.12ms)
+2026-01-19 00:59:50 - middleware.request_id_middleware - INFO - dispatch:64 - [44bc7a09-6381-4a31-95b4-fa3e48ce4b9b] → GET /health_check (client: 127.0.0.1)
+2026-01-19 00:59:50 - middleware.request_id_middleware - INFO - dispatch:77 - [44bc7a09-6381-4a31-95b4-fa3e48ce4b9b] ← GET /health_check - 307 (2.48ms)
+2026-01-19 01:00:19 - middleware.request_id_middleware - INFO - dispatch:64 - [d123e3d1-1b97-4e22-b1a5-b905d9052d7b] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:00:19 - middleware.request_id_middleware - INFO - dispatch:77 - [d123e3d1-1b97-4e22-b1a5-b905d9052d7b] ← GET /health_check - 307 (1.86ms)
+2026-01-19 01:00:48 - middleware.request_id_middleware - INFO - dispatch:64 - [5151f84b-0cb6-4ee2-b148-a780b2615fe5] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:00:48 - middleware.request_id_middleware - INFO - dispatch:77 - [5151f84b-0cb6-4ee2-b148-a780b2615fe5] ← GET /health_check - 307 (2.29ms)
+2026-01-19 01:01:16 - middleware.request_id_middleware - INFO - dispatch:64 - [0b2cc237-c159-4ff0-83aa-9e195c9882e4] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:01:16 - middleware.request_id_middleware - INFO - dispatch:77 - [0b2cc237-c159-4ff0-83aa-9e195c9882e4] ← GET /health_check - 307 (3.41ms)
+2026-01-19 01:01:45 - middleware.request_id_middleware - INFO - dispatch:64 - [28321993-16b1-41eb-83e9-62a5677ccace] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:01:45 - middleware.request_id_middleware - INFO - dispatch:77 - [28321993-16b1-41eb-83e9-62a5677ccace] ← GET /health_check - 307 (2.12ms)
+2026-01-19 01:02:14 - middleware.request_id_middleware - INFO - dispatch:64 - [3e55bf63-55cf-4f99-a31a-5819ceb4ba81] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:02:14 - middleware.request_id_middleware - INFO - dispatch:77 - [3e55bf63-55cf-4f99-a31a-5819ceb4ba81] ← GET /health_check - 307 (1.99ms)
+2026-01-19 01:02:43 - middleware.request_id_middleware - INFO - dispatch:64 - [24660349-fbfa-43f5-9f88-8ac4a8312636] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:02:43 - middleware.request_id_middleware - INFO - dispatch:77 - [24660349-fbfa-43f5-9f88-8ac4a8312636] ← GET /health_check - 307 (2.14ms)
+2026-01-19 01:03:12 - middleware.request_id_middleware - INFO - dispatch:64 - [b9afa213-063c-42d0-8a1b-78040636f24c] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:03:12 - middleware.request_id_middleware - INFO - dispatch:77 - [b9afa213-063c-42d0-8a1b-78040636f24c] ← GET /health_check - 307 (2.52ms)
+2026-01-19 01:03:41 - middleware.request_id_middleware - INFO - dispatch:64 - [f870f84e-6d47-4b3f-add9-a96037764464] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:03:41 - middleware.request_id_middleware - INFO - dispatch:77 - [f870f84e-6d47-4b3f-add9-a96037764464] ← GET /health_check - 307 (2.0ms)
+2026-01-19 01:04:10 - middleware.request_id_middleware - INFO - dispatch:64 - [e80620b1-704a-4671-80a6-f87570a91cc1] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:04:10 - middleware.request_id_middleware - INFO - dispatch:77 - [e80620b1-704a-4671-80a6-f87570a91cc1] ← GET /health_check - 307 (1.8ms)
+2026-01-19 01:04:39 - middleware.request_id_middleware - INFO - dispatch:64 - [fb6b91d1-c5c1-43d3-9428-9b7b18f0fe04] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:04:39 - middleware.request_id_middleware - INFO - dispatch:77 - [fb6b91d1-c5c1-43d3-9428-9b7b18f0fe04] ← GET /health_check - 307 (2.68ms)
+2026-01-19 01:05:07 - middleware.request_id_middleware - INFO - dispatch:64 - [48816c57-91ce-4c4d-9159-1b1bce03fd86] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:05:07 - middleware.request_id_middleware - INFO - dispatch:77 - [48816c57-91ce-4c4d-9159-1b1bce03fd86] ← GET /health_check - 307 (1.97ms)
+2026-01-19 01:05:36 - middleware.request_id_middleware - INFO - dispatch:64 - [c18fec1a-313a-427d-82b0-b623b013ac0d] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:05:36 - middleware.request_id_middleware - INFO - dispatch:77 - [c18fec1a-313a-427d-82b0-b623b013ac0d] ← GET /health_check - 307 (1.98ms)
+2026-01-19 01:06:05 - middleware.request_id_middleware - INFO - dispatch:64 - [a45e9f28-1fae-4664-a6f7-4a4c2fcb654e] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:06:05 - middleware.request_id_middleware - INFO - dispatch:77 - [a45e9f28-1fae-4664-a6f7-4a4c2fcb654e] ← GET /health_check - 307 (1.67ms)
+2026-01-19 01:06:34 - middleware.request_id_middleware - INFO - dispatch:64 - [a28d8311-f037-4d61-9b04-1ecb830f26d3] → GET /health_check (client: 127.0.0.1)
+2026-01-19 01:06:34 - middleware.request_id_middleware - INFO - dispatch:77 - [a28d8311-f037-4d61-9b04-1ecb830f26d3] ← GET /health_check - 307 (1.8ms)
+2026-01-19 01:06:52 - __main__ - INFO - lifespan:102 - 👋 Shutting down API...
+2026-01-19 01:06:52 - config.redis_config - INFO - close:103 - Redis connection closed
+2026-01-19 01:06:52 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
+2026-01-19 01:06:52 - __main__ - INFO - lifespan:114 - ✅ Shutdown complete
+2026-01-19 17:29:50 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 18:27:14 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 18:27:18 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-21 18:27:19 - __main__ - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-21 18:27:19 - __main__ - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-21 18:27:19 - __main__ - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-21 18:27:19 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-21 18:27:19 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-21 18:27:19 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:27:19 - __main__ - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-21 18:27:23 - middleware.request_id_middleware - INFO - dispatch:64 - [44ffdf88-1c60-43a8-af41-945a6e035790] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:27:23 - middleware.request_id_middleware - INFO - dispatch:77 - [44ffdf88-1c60-43a8-af41-945a6e035790] ← GET /health_check - 307 (2.3ms)
+2026-01-21 18:27:52 - middleware.request_id_middleware - INFO - dispatch:64 - [fd2d804a-677b-4547-b27f-bd73bb40e53c] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:27:52 - middleware.request_id_middleware - INFO - dispatch:77 - [fd2d804a-677b-4547-b27f-bd73bb40e53c] ← GET /health_check - 307 (2.37ms)
+2026-01-21 18:27:54 - __main__ - INFO - lifespan:102 - 👋 Shutting down API...
+2026-01-21 18:27:54 - config.redis_config - INFO - close:103 - Redis connection closed
+2026-01-21 18:27:54 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
+2026-01-21 18:27:54 - __main__ - INFO - lifespan:114 - ✅ Shutdown complete
+2026-01-21 18:34:21 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 18:34:22 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-21 18:34:22 - __main__ - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-21 18:34:22 - __main__ - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-21 18:34:23 - __main__ - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-21 18:34:23 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-21 18:34:23 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-21 18:34:23 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:34:23 - __main__ - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-21 18:34:25 - middleware.request_id_middleware - INFO - dispatch:64 - [281a1ff1-b15b-4205-a823-cbbc2c2ca0fd] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:34:25 - middleware.request_id_middleware - INFO - dispatch:77 - [281a1ff1-b15b-4205-a823-cbbc2c2ca0fd] ← GET /health_check - 307 (2.26ms)
+2026-01-21 18:34:54 - middleware.request_id_middleware - INFO - dispatch:64 - [2bfb133e-81a1-4f90-b9d2-397d140a4831] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:34:54 - middleware.request_id_middleware - INFO - dispatch:77 - [2bfb133e-81a1-4f90-b9d2-397d140a4831] ← GET /health_check - 307 (1.79ms)
+2026-01-21 18:35:24 - middleware.request_id_middleware - INFO - dispatch:64 - [8ec23815-7df5-428e-9322-b49749fd740e] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:35:24 - middleware.request_id_middleware - INFO - dispatch:77 - [8ec23815-7df5-428e-9322-b49749fd740e] ← GET /health_check - 307 (2.19ms)
+2026-01-21 18:35:53 - middleware.request_id_middleware - INFO - dispatch:64 - [f3722082-c5d5-43f1-9664-dea2e1dd9c03] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:35:53 - middleware.request_id_middleware - INFO - dispatch:77 - [f3722082-c5d5-43f1-9664-dea2e1dd9c03] ← GET /health_check - 307 (1.77ms)
+2026-01-21 18:36:22 - middleware.request_id_middleware - INFO - dispatch:64 - [b5af4590-43d3-42ab-bd2f-8efdddd12c63] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:36:22 - middleware.request_id_middleware - INFO - dispatch:77 - [b5af4590-43d3-42ab-bd2f-8efdddd12c63] ← GET /health_check - 307 (1.85ms)
+2026-01-21 18:36:52 - middleware.request_id_middleware - INFO - dispatch:64 - [df945209-aba3-4acb-ac56-40e5af0cbb16] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:36:52 - middleware.request_id_middleware - INFO - dispatch:77 - [df945209-aba3-4acb-ac56-40e5af0cbb16] ← GET /health_check - 307 (2.12ms)
+2026-01-21 18:37:21 - middleware.request_id_middleware - INFO - dispatch:64 - [cc975950-22a2-48cf-9ad9-f6b17afd0a29] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:37:21 - middleware.request_id_middleware - INFO - dispatch:77 - [cc975950-22a2-48cf-9ad9-f6b17afd0a29] ← GET /health_check - 307 (2.04ms)
+2026-01-21 18:37:51 - middleware.request_id_middleware - INFO - dispatch:64 - [87c21505-9ec5-4721-abe6-b78ce47cb284] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:37:51 - middleware.request_id_middleware - INFO - dispatch:77 - [87c21505-9ec5-4721-abe6-b78ce47cb284] ← GET /health_check - 307 (1.74ms)
+2026-01-21 18:38:20 - middleware.request_id_middleware - INFO - dispatch:64 - [470c3ecc-5307-4876-819c-fdc76afa8644] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:38:20 - middleware.request_id_middleware - INFO - dispatch:77 - [470c3ecc-5307-4876-819c-fdc76afa8644] ← GET /health_check - 307 (3.0ms)
+2026-01-21 18:38:49 - middleware.request_id_middleware - INFO - dispatch:64 - [1cfe7d1e-f304-4a71-9a32-1f10f99b9498] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:38:49 - middleware.request_id_middleware - INFO - dispatch:77 - [1cfe7d1e-f304-4a71-9a32-1f10f99b9498] ← GET /health_check - 307 (1.93ms)
+2026-01-21 18:39:19 - middleware.request_id_middleware - INFO - dispatch:64 - [df57cb25-700d-4df6-a226-8e0024df9cbf] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:39:19 - middleware.request_id_middleware - INFO - dispatch:77 - [df57cb25-700d-4df6-a226-8e0024df9cbf] ← GET /health_check - 307 (1.63ms)
+2026-01-21 18:39:48 - middleware.request_id_middleware - INFO - dispatch:64 - [dcd8105f-1c1d-4d05-bfd0-765e84dc23f0] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:39:48 - middleware.request_id_middleware - INFO - dispatch:77 - [dcd8105f-1c1d-4d05-bfd0-765e84dc23f0] ← GET /health_check - 307 (1.94ms)
+2026-01-21 18:40:17 - middleware.request_id_middleware - INFO - dispatch:64 - [075a34e0-d763-4162-b451-a565bbcd3d25] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:40:17 - middleware.request_id_middleware - INFO - dispatch:77 - [075a34e0-d763-4162-b451-a565bbcd3d25] ← GET /health_check - 307 (1.92ms)
+2026-01-21 18:40:47 - middleware.request_id_middleware - INFO - dispatch:64 - [40b30a8c-2e54-45cb-8d33-a80aa5043b3d] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:40:47 - middleware.request_id_middleware - INFO - dispatch:77 - [40b30a8c-2e54-45cb-8d33-a80aa5043b3d] ← GET /health_check - 307 (1.85ms)
+2026-01-21 18:41:16 - middleware.request_id_middleware - INFO - dispatch:64 - [b0576b6b-3cb0-4c14-b2ff-5d7fee8d503e] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:41:16 - middleware.request_id_middleware - INFO - dispatch:77 - [b0576b6b-3cb0-4c14-b2ff-5d7fee8d503e] ← GET /health_check - 307 (2.08ms)
+2026-01-21 18:41:45 - middleware.request_id_middleware - INFO - dispatch:64 - [64faab8a-1cf2-427d-ad13-5e7356a3c436] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:41:45 - middleware.request_id_middleware - INFO - dispatch:77 - [64faab8a-1cf2-427d-ad13-5e7356a3c436] ← GET /health_check - 307 (5.93ms)
+2026-01-21 18:42:15 - middleware.request_id_middleware - INFO - dispatch:64 - [bc77d1ac-f70f-453f-8148-0971cdba2ed4] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:42:15 - middleware.request_id_middleware - INFO - dispatch:77 - [bc77d1ac-f70f-453f-8148-0971cdba2ed4] ← GET /health_check - 307 (1.98ms)
+2026-01-21 18:42:44 - middleware.request_id_middleware - INFO - dispatch:64 - [52e1072d-fada-4680-9c14-339cd2562e23] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:42:44 - middleware.request_id_middleware - INFO - dispatch:77 - [52e1072d-fada-4680-9c14-339cd2562e23] ← GET /health_check - 307 (1.95ms)
+2026-01-21 18:43:13 - middleware.request_id_middleware - INFO - dispatch:64 - [5bf589ed-b695-4619-93c8-ae422edf7127] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:43:13 - middleware.request_id_middleware - INFO - dispatch:77 - [5bf589ed-b695-4619-93c8-ae422edf7127] ← GET /health_check - 307 (1.88ms)
+2026-01-21 18:43:42 - middleware.request_id_middleware - INFO - dispatch:64 - [fead1ee7-e161-43e5-8fad-8dc75ff27aab] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:43:42 - middleware.request_id_middleware - INFO - dispatch:77 - [fead1ee7-e161-43e5-8fad-8dc75ff27aab] ← GET /health_check - 307 (2.18ms)
+2026-01-21 18:44:12 - middleware.request_id_middleware - INFO - dispatch:64 - [e3954f59-efd2-45bf-a636-87a7a6df7aee] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:44:12 - middleware.request_id_middleware - INFO - dispatch:77 - [e3954f59-efd2-45bf-a636-87a7a6df7aee] ← GET /health_check - 307 (1.85ms)
+2026-01-21 18:44:41 - middleware.request_id_middleware - INFO - dispatch:64 - [9ef36b60-decc-4a04-bc18-80c41953bdee] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:44:41 - middleware.request_id_middleware - INFO - dispatch:77 - [9ef36b60-decc-4a04-bc18-80c41953bdee] ← GET /health_check - 307 (1.71ms)
+2026-01-21 18:45:10 - middleware.request_id_middleware - INFO - dispatch:64 - [187c6454-ebf1-4c12-8992-630e571ba679] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:45:10 - middleware.request_id_middleware - INFO - dispatch:77 - [187c6454-ebf1-4c12-8992-630e571ba679] ← GET /health_check - 307 (2.54ms)
+2026-01-21 18:45:39 - middleware.request_id_middleware - INFO - dispatch:64 - [5ba92807-f569-4329-9c5c-dbaff04636cd] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:45:39 - middleware.request_id_middleware - INFO - dispatch:77 - [5ba92807-f569-4329-9c5c-dbaff04636cd] ← GET /health_check - 307 (1.75ms)
+2026-01-21 18:46:09 - middleware.request_id_middleware - INFO - dispatch:64 - [ec7535e5-2478-49d1-8017-15b690aef298] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:46:09 - middleware.request_id_middleware - INFO - dispatch:77 - [ec7535e5-2478-49d1-8017-15b690aef298] ← GET /health_check - 307 (3.67ms)
+2026-01-21 18:46:38 - middleware.request_id_middleware - INFO - dispatch:64 - [8dc8be5a-ec22-4e85-9150-e97a70cfa445] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:46:38 - middleware.request_id_middleware - INFO - dispatch:77 - [8dc8be5a-ec22-4e85-9150-e97a70cfa445] ← GET /health_check - 307 (1.99ms)
+2026-01-21 18:47:07 - middleware.request_id_middleware - INFO - dispatch:64 - [df274d1f-2c47-4c08-b05b-bd6caae83add] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:47:07 - middleware.request_id_middleware - INFO - dispatch:77 - [df274d1f-2c47-4c08-b05b-bd6caae83add] ← GET /health_check - 307 (2.13ms)
+2026-01-21 18:47:35 - __main__ - INFO - lifespan:102 - 👋 Shutting down API...
+2026-01-21 18:47:35 - config.redis_config - INFO - close:103 - Redis connection closed
+2026-01-21 18:47:35 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
+2026-01-21 18:47:35 - __main__ - INFO - lifespan:114 - ✅ Shutdown complete
+2026-01-21 18:47:54 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 18:47:55 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-21 18:47:55 - __main__ - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-21 18:47:55 - __main__ - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-21 18:47:55 - __main__ - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-21 18:47:55 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-21 18:47:55 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-21 18:47:55 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-01-21 18:47:55 - __main__ - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-21 18:47:57 - middleware.request_id_middleware - INFO - dispatch:64 - [76cd47a7-d44f-4e95-bbbf-cacf6708612f] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:47:57 - middleware.request_id_middleware - INFO - dispatch:77 - [76cd47a7-d44f-4e95-bbbf-cacf6708612f] ← GET /health_check - 307 (2.18ms)
+2026-01-21 18:48:27 - middleware.request_id_middleware - INFO - dispatch:64 - [7b402c39-b49c-4d79-bcf0-0c76580a30a6] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:48:27 - middleware.request_id_middleware - INFO - dispatch:77 - [7b402c39-b49c-4d79-bcf0-0c76580a30a6] ← GET /health_check - 307 (1.84ms)
+2026-01-21 18:48:56 - middleware.request_id_middleware - INFO - dispatch:64 - [0b5497b8-835c-4821-8cdf-e31609da75d0] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:48:56 - middleware.request_id_middleware - INFO - dispatch:77 - [0b5497b8-835c-4821-8cdf-e31609da75d0] ← GET /health_check - 307 (2.29ms)
+2026-01-21 18:49:25 - middleware.request_id_middleware - INFO - dispatch:64 - [0e68c9b1-930a-42f2-8059-45c775e3f8b5] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:49:25 - middleware.request_id_middleware - INFO - dispatch:77 - [0e68c9b1-930a-42f2-8059-45c775e3f8b5] ← GET /health_check - 307 (2.06ms)
+2026-01-21 18:49:54 - middleware.request_id_middleware - INFO - dispatch:64 - [e9909c6d-61d7-4777-a86a-0545e7336191] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:49:54 - middleware.request_id_middleware - INFO - dispatch:77 - [e9909c6d-61d7-4777-a86a-0545e7336191] ← GET /health_check - 307 (1.83ms)
+2026-01-21 18:50:24 - middleware.request_id_middleware - INFO - dispatch:64 - [e52e885a-a75b-4c08-a22e-b9d434d55879] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:50:24 - middleware.request_id_middleware - INFO - dispatch:77 - [e52e885a-a75b-4c08-a22e-b9d434d55879] ← GET /health_check - 307 (2.18ms)
+2026-01-21 18:50:53 - middleware.request_id_middleware - INFO - dispatch:64 - [43c5fa75-23f7-48a1-9d83-6a5e9b4dae25] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:50:53 - middleware.request_id_middleware - INFO - dispatch:77 - [43c5fa75-23f7-48a1-9d83-6a5e9b4dae25] ← GET /health_check - 307 (3.31ms)
+2026-01-21 18:51:22 - middleware.request_id_middleware - INFO - dispatch:64 - [5b5f0d0b-af71-4585-88e7-b54edbecd177] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:51:22 - middleware.request_id_middleware - INFO - dispatch:77 - [5b5f0d0b-af71-4585-88e7-b54edbecd177] ← GET /health_check - 307 (2.43ms)
+2026-01-21 18:51:51 - middleware.request_id_middleware - INFO - dispatch:64 - [aba9c441-153b-4f37-8f99-2284a2b89933] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:51:51 - middleware.request_id_middleware - INFO - dispatch:77 - [aba9c441-153b-4f37-8f99-2284a2b89933] ← GET /health_check - 307 (1.66ms)
+2026-01-21 18:52:20 - middleware.request_id_middleware - INFO - dispatch:64 - [5372fb35-4dc2-4e21-ae77-ac1b14557250] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:52:20 - middleware.request_id_middleware - INFO - dispatch:77 - [5372fb35-4dc2-4e21-ae77-ac1b14557250] ← GET /health_check - 307 (2.65ms)
+2026-01-21 18:52:49 - middleware.request_id_middleware - INFO - dispatch:64 - [e2d61d85-69c9-45c2-aa5f-694bc817331a] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:52:49 - middleware.request_id_middleware - INFO - dispatch:77 - [e2d61d85-69c9-45c2-aa5f-694bc817331a] ← GET /health_check - 307 (2.0ms)
+2026-01-21 18:53:18 - middleware.request_id_middleware - INFO - dispatch:64 - [c01cb414-4acd-4ae6-8fc2-c5a3061ac6e0] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:53:18 - middleware.request_id_middleware - INFO - dispatch:77 - [c01cb414-4acd-4ae6-8fc2-c5a3061ac6e0] ← GET /health_check - 307 (1.86ms)
+2026-01-21 18:53:48 - middleware.request_id_middleware - INFO - dispatch:64 - [6ab28b31-eea0-4151-8e6c-d5f419453a6b] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:53:48 - middleware.request_id_middleware - INFO - dispatch:77 - [6ab28b31-eea0-4151-8e6c-d5f419453a6b] ← GET /health_check - 307 (2.44ms)
+2026-01-21 18:54:16 - middleware.request_id_middleware - INFO - dispatch:64 - [762115d1-5d88-4f53-ad40-51c20e3da9ec] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:54:16 - middleware.request_id_middleware - INFO - dispatch:77 - [762115d1-5d88-4f53-ad40-51c20e3da9ec] ← GET /health_check - 307 (2.19ms)
+2026-01-21 18:54:46 - middleware.request_id_middleware - INFO - dispatch:64 - [8da5f333-ee97-41e3-86d8-48a9472b5269] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:54:46 - middleware.request_id_middleware - INFO - dispatch:77 - [8da5f333-ee97-41e3-86d8-48a9472b5269] ← GET /health_check - 307 (2.19ms)
+2026-01-21 18:55:15 - middleware.request_id_middleware - INFO - dispatch:64 - [6f3b4149-2a69-4800-abdd-01c723607c2c] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:55:15 - middleware.request_id_middleware - INFO - dispatch:77 - [6f3b4149-2a69-4800-abdd-01c723607c2c] ← GET /health_check - 307 (1.97ms)
+2026-01-21 18:55:44 - middleware.request_id_middleware - INFO - dispatch:64 - [2b15a510-35f2-48f1-8f17-d92560ca6df2] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:55:44 - middleware.request_id_middleware - INFO - dispatch:77 - [2b15a510-35f2-48f1-8f17-d92560ca6df2] ← GET /health_check - 307 (1.84ms)
+2026-01-21 18:56:13 - middleware.request_id_middleware - INFO - dispatch:64 - [a4f0f2b3-d1cf-4c20-98ae-4fa198c4b0f5] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:56:13 - middleware.request_id_middleware - INFO - dispatch:77 - [a4f0f2b3-d1cf-4c20-98ae-4fa198c4b0f5] ← GET /health_check - 307 (1.95ms)
+2026-01-21 18:56:42 - middleware.request_id_middleware - INFO - dispatch:64 - [fb1b8cc3-ad24-4886-8067-a40d5333db49] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:56:42 - middleware.request_id_middleware - INFO - dispatch:77 - [fb1b8cc3-ad24-4886-8067-a40d5333db49] ← GET /health_check - 307 (1.8ms)
+2026-01-21 18:57:11 - middleware.request_id_middleware - INFO - dispatch:64 - [9dae680d-c0cb-41bf-81f8-641eeb75ef03] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:57:11 - middleware.request_id_middleware - INFO - dispatch:77 - [9dae680d-c0cb-41bf-81f8-641eeb75ef03] ← GET /health_check - 307 (2.03ms)
+2026-01-21 18:57:41 - middleware.request_id_middleware - INFO - dispatch:64 - [40b77220-e52d-4667-bfeb-3300be166c45] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:57:41 - middleware.request_id_middleware - INFO - dispatch:77 - [40b77220-e52d-4667-bfeb-3300be166c45] ← GET /health_check - 307 (4.28ms)
+2026-01-21 18:58:10 - middleware.request_id_middleware - INFO - dispatch:64 - [b6a41ac9-1523-4a22-a062-84ae3c957ada] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:58:10 - middleware.request_id_middleware - INFO - dispatch:77 - [b6a41ac9-1523-4a22-a062-84ae3c957ada] ← GET /health_check - 307 (1.92ms)
+2026-01-21 18:58:39 - middleware.request_id_middleware - INFO - dispatch:64 - [a0a2c8c1-a85e-4781-86df-9369c6ab2e94] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:58:39 - middleware.request_id_middleware - INFO - dispatch:77 - [a0a2c8c1-a85e-4781-86df-9369c6ab2e94] ← GET /health_check - 307 (1.7ms)
+2026-01-21 18:59:08 - middleware.request_id_middleware - INFO - dispatch:64 - [31e3be9b-b2ea-40d6-bea1-59432339d253] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:59:08 - middleware.request_id_middleware - INFO - dispatch:77 - [31e3be9b-b2ea-40d6-bea1-59432339d253] ← GET /health_check - 307 (1.8ms)
+2026-01-21 18:59:36 - middleware.request_id_middleware - INFO - dispatch:64 - [59e5e33e-5d77-4cb3-b574-d4e348544d36] → GET /health_check (client: 127.0.0.1)
+2026-01-21 18:59:36 - middleware.request_id_middleware - INFO - dispatch:77 - [59e5e33e-5d77-4cb3-b574-d4e348544d36] ← GET /health_check - 307 (2.44ms)
+2026-01-21 19:00:06 - middleware.request_id_middleware - INFO - dispatch:64 - [33608ec0-a9c3-4d47-8e38-05dbe5d49aab] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:00:06 - middleware.request_id_middleware - INFO - dispatch:77 - [33608ec0-a9c3-4d47-8e38-05dbe5d49aab] ← GET /health_check - 307 (2.66ms)
+2026-01-21 19:00:35 - middleware.request_id_middleware - INFO - dispatch:64 - [e3d1e183-edac-4fe1-8dcd-6f68ebfe81be] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:00:35 - middleware.request_id_middleware - INFO - dispatch:77 - [e3d1e183-edac-4fe1-8dcd-6f68ebfe81be] ← GET /health_check - 307 (2.02ms)
+2026-01-21 19:01:04 - middleware.request_id_middleware - INFO - dispatch:64 - [7db1d276-ffe2-41d5-aae0-3ce85cd72eba] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:01:04 - middleware.request_id_middleware - INFO - dispatch:77 - [7db1d276-ffe2-41d5-aae0-3ce85cd72eba] ← GET /health_check - 307 (1.84ms)
+2026-01-21 19:01:33 - middleware.request_id_middleware - INFO - dispatch:64 - [402cba20-580f-4d87-849a-7e46046c4a9b] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:01:33 - middleware.request_id_middleware - INFO - dispatch:77 - [402cba20-580f-4d87-849a-7e46046c4a9b] ← GET /health_check - 307 (1.82ms)
+2026-01-21 19:02:02 - middleware.request_id_middleware - INFO - dispatch:64 - [e6650148-0865-4f2f-a7af-c00ff295ddb6] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:02:02 - middleware.request_id_middleware - INFO - dispatch:77 - [e6650148-0865-4f2f-a7af-c00ff295ddb6] ← GET /health_check - 307 (2.2ms)
+2026-01-21 19:02:31 - middleware.request_id_middleware - INFO - dispatch:64 - [9cb32bd8-86b1-47bd-bbf1-1b08072c6bdb] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:02:31 - middleware.request_id_middleware - INFO - dispatch:77 - [9cb32bd8-86b1-47bd-bbf1-1b08072c6bdb] ← GET /health_check - 307 (1.91ms)
+2026-01-21 19:03:00 - middleware.request_id_middleware - INFO - dispatch:64 - [20b23fdb-6808-47a4-a389-d6d3fd89c208] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:03:00 - middleware.request_id_middleware - INFO - dispatch:77 - [20b23fdb-6808-47a4-a389-d6d3fd89c208] ← GET /health_check - 307 (1.89ms)
+2026-01-21 19:03:29 - middleware.request_id_middleware - INFO - dispatch:64 - [3938b76c-dd32-4b22-a654-73555920dd06] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:03:29 - middleware.request_id_middleware - INFO - dispatch:77 - [3938b76c-dd32-4b22-a654-73555920dd06] ← GET /health_check - 307 (2.14ms)
+2026-01-21 19:03:58 - middleware.request_id_middleware - INFO - dispatch:64 - [bb51bda0-9383-4a23-9404-d8f2ab598398] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:03:58 - middleware.request_id_middleware - INFO - dispatch:77 - [bb51bda0-9383-4a23-9404-d8f2ab598398] ← GET /health_check - 307 (2.15ms)
+2026-01-21 19:04:27 - middleware.request_id_middleware - INFO - dispatch:64 - [1c86528f-c92d-4004-9f24-33d194ff833b] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:04:27 - middleware.request_id_middleware - INFO - dispatch:77 - [1c86528f-c92d-4004-9f24-33d194ff833b] ← GET /health_check - 307 (1.95ms)
+2026-01-21 19:04:57 - middleware.request_id_middleware - INFO - dispatch:64 - [8a6020bd-aa69-4dcc-a93a-fe922874dee8] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:04:57 - middleware.request_id_middleware - INFO - dispatch:77 - [8a6020bd-aa69-4dcc-a93a-fe922874dee8] ← GET /health_check - 307 (3.65ms)
+2026-01-21 19:05:26 - middleware.request_id_middleware - INFO - dispatch:64 - [ad59860f-3255-4968-801f-411b77a89d81] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:05:26 - middleware.request_id_middleware - INFO - dispatch:77 - [ad59860f-3255-4968-801f-411b77a89d81] ← GET /health_check - 307 (2.24ms)
+2026-01-21 19:05:55 - middleware.request_id_middleware - INFO - dispatch:64 - [75e25f10-b0d8-4a07-af2e-1875bb6e4602] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:05:55 - middleware.request_id_middleware - INFO - dispatch:77 - [75e25f10-b0d8-4a07-af2e-1875bb6e4602] ← GET /health_check - 307 (1.82ms)
+2026-01-21 19:06:23 - middleware.request_id_middleware - INFO - dispatch:64 - [76755836-00a4-4380-8bc0-1c831b2c5154] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:06:23 - middleware.request_id_middleware - INFO - dispatch:77 - [76755836-00a4-4380-8bc0-1c831b2c5154] ← GET /health_check - 307 (2.08ms)
+2026-01-21 19:06:53 - middleware.request_id_middleware - INFO - dispatch:64 - [d03c2198-05f3-4723-b93e-a708306027f9] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:06:53 - middleware.request_id_middleware - INFO - dispatch:77 - [d03c2198-05f3-4723-b93e-a708306027f9] ← GET /health_check - 307 (1.88ms)
+2026-01-21 19:07:22 - middleware.request_id_middleware - INFO - dispatch:64 - [6dbb756e-02e6-46af-b91c-6075ded338db] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:07:22 - middleware.request_id_middleware - INFO - dispatch:77 - [6dbb756e-02e6-46af-b91c-6075ded338db] ← GET /health_check - 307 (1.76ms)
+2026-01-21 19:07:51 - middleware.request_id_middleware - INFO - dispatch:64 - [4478ab2e-9062-48cb-9130-73e3ae20af4f] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:07:51 - middleware.request_id_middleware - INFO - dispatch:77 - [4478ab2e-9062-48cb-9130-73e3ae20af4f] ← GET /health_check - 307 (1.84ms)
+2026-01-21 19:08:20 - middleware.request_id_middleware - INFO - dispatch:64 - [6c7af290-3e87-4b5e-8ba7-da6aa129f6e8] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:08:20 - middleware.request_id_middleware - INFO - dispatch:77 - [6c7af290-3e87-4b5e-8ba7-da6aa129f6e8] ← GET /health_check - 307 (1.95ms)
+2026-01-21 19:08:49 - middleware.request_id_middleware - INFO - dispatch:64 - [32245162-fa09-4da0-ba9f-e354d10e6c2e] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:08:49 - middleware.request_id_middleware - INFO - dispatch:77 - [32245162-fa09-4da0-ba9f-e354d10e6c2e] ← GET /health_check - 307 (2.03ms)
+2026-01-21 19:09:18 - middleware.request_id_middleware - INFO - dispatch:64 - [bb4e9ef1-6ce1-4f81-b90a-dc568b8fb505] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:09:18 - middleware.request_id_middleware - INFO - dispatch:77 - [bb4e9ef1-6ce1-4f81-b90a-dc568b8fb505] ← GET /health_check - 307 (2.61ms)
+2026-01-21 19:09:47 - middleware.request_id_middleware - INFO - dispatch:64 - [43531789-8a80-473d-88c1-36f2a7d2aa64] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:09:47 - middleware.request_id_middleware - INFO - dispatch:77 - [43531789-8a80-473d-88c1-36f2a7d2aa64] ← GET /health_check - 307 (1.85ms)
+2026-01-21 19:10:16 - middleware.request_id_middleware - INFO - dispatch:64 - [1f6ff187-2e61-4c47-8756-778f0424e752] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:10:16 - middleware.request_id_middleware - INFO - dispatch:77 - [1f6ff187-2e61-4c47-8756-778f0424e752] ← GET /health_check - 307 (1.71ms)
+2026-01-21 19:10:45 - middleware.request_id_middleware - INFO - dispatch:64 - [24c5f6ba-8ae7-490a-98e9-84dcb4b92d45] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:10:45 - middleware.request_id_middleware - INFO - dispatch:77 - [24c5f6ba-8ae7-490a-98e9-84dcb4b92d45] ← GET /health_check - 307 (1.94ms)
+2026-01-21 19:11:14 - middleware.request_id_middleware - INFO - dispatch:64 - [28ef6271-2bad-4ec1-8d34-60b6b6240383] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:11:14 - middleware.request_id_middleware - INFO - dispatch:77 - [28ef6271-2bad-4ec1-8d34-60b6b6240383] ← GET /health_check - 307 (1.94ms)
+2026-01-21 19:11:43 - middleware.request_id_middleware - INFO - dispatch:64 - [79847bf9-2c57-4f76-a84f-3e03e2bf4283] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:11:43 - middleware.request_id_middleware - INFO - dispatch:77 - [79847bf9-2c57-4f76-a84f-3e03e2bf4283] ← GET /health_check - 307 (1.8ms)
+2026-01-21 19:12:12 - middleware.request_id_middleware - INFO - dispatch:64 - [f660a482-aff2-4b0d-bc42-43dcd4005e2f] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:12:12 - middleware.request_id_middleware - INFO - dispatch:77 - [f660a482-aff2-4b0d-bc42-43dcd4005e2f] ← GET /health_check - 307 (2.1ms)
+2026-01-21 19:12:41 - middleware.request_id_middleware - INFO - dispatch:64 - [3dc40500-5f89-465d-a147-9334eec3c4f1] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:12:41 - middleware.request_id_middleware - INFO - dispatch:77 - [3dc40500-5f89-465d-a147-9334eec3c4f1] ← GET /health_check - 307 (1.93ms)
+2026-01-21 19:13:10 - middleware.request_id_middleware - INFO - dispatch:64 - [81ef3fb0-ca8c-455b-99bc-663fcd738006] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:13:10 - middleware.request_id_middleware - INFO - dispatch:77 - [81ef3fb0-ca8c-455b-99bc-663fcd738006] ← GET /health_check - 307 (2.06ms)
+2026-01-21 19:13:39 - middleware.request_id_middleware - INFO - dispatch:64 - [d97997bc-af95-423d-a2ea-2129c3c3e5ce] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:13:39 - middleware.request_id_middleware - INFO - dispatch:77 - [d97997bc-af95-423d-a2ea-2129c3c3e5ce] ← GET /health_check - 307 (2.16ms)
+2026-01-21 19:14:08 - middleware.request_id_middleware - INFO - dispatch:64 - [fc1e1e2f-b46e-43e5-be42-d9dd98ea999a] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:14:08 - middleware.request_id_middleware - INFO - dispatch:77 - [fc1e1e2f-b46e-43e5-be42-d9dd98ea999a] ← GET /health_check - 307 (1.94ms)
+2026-01-21 19:14:37 - middleware.request_id_middleware - INFO - dispatch:64 - [6cd3b53c-36d9-4fa9-b689-6bb2fd759a80] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:14:37 - middleware.request_id_middleware - INFO - dispatch:77 - [6cd3b53c-36d9-4fa9-b689-6bb2fd759a80] ← GET /health_check - 307 (1.89ms)
+2026-01-21 19:15:06 - middleware.request_id_middleware - INFO - dispatch:64 - [efcfea4a-84e6-45b6-a4ef-52c711cdbaed] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:15:06 - middleware.request_id_middleware - INFO - dispatch:77 - [efcfea4a-84e6-45b6-a4ef-52c711cdbaed] ← GET /health_check - 307 (2.03ms)
+2026-01-21 19:15:35 - middleware.request_id_middleware - INFO - dispatch:64 - [54adc928-1c79-4d18-9acb-53c6ff383831] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:15:35 - middleware.request_id_middleware - INFO - dispatch:77 - [54adc928-1c79-4d18-9acb-53c6ff383831] ← GET /health_check - 307 (1.86ms)
+2026-01-21 19:16:02 - __main__ - INFO - lifespan:102 - 👋 Shutting down API...
+2026-01-21 19:16:02 - config.redis_config - INFO - close:103 - Redis connection closed
+2026-01-21 19:16:02 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
+2026-01-21 19:16:02 - __main__ - INFO - lifespan:114 - ✅ Shutdown complete
+2026-01-21 19:16:28 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 19:16:29 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-21 19:16:29 - __main__ - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-21 19:16:29 - __main__ - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-21 19:16:29 - __main__ - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-21 19:16:29 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-21 19:16:29 - __main__ - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-21 19:16:30 - __main__ - ERROR - create_admin_if_missing:80 - ❌ Error creating admin: (psycopg2.errors.UndefinedTable) relation "clients" does not exist
+LINE 2: FROM clients 
+             ^
+
+[SQL: SELECT clients.name AS clients_name, clients.lastname AS clients_lastname, clients.email AS clients_email, clients.telephone AS clients_telephone, clients.password AS clients_password, clients.is_admin AS clients_is_admin, clients.id_key AS clients_id_key 
+FROM clients 
+WHERE clients.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@techstore.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-01-21 19:16:30 - __main__ - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-21 19:16:32 - middleware.request_id_middleware - INFO - dispatch:64 - [ed45b682-6c50-42db-95bd-86f644c331e8] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:16:32 - middleware.request_id_middleware - INFO - dispatch:77 - [ed45b682-6c50-42db-95bd-86f644c331e8] ← GET /health_check - 307 (2.1ms)
+2026-01-21 19:16:32 - middleware.request_id_middleware - INFO - dispatch:64 - [386d3ef8-b971-4680-bcdb-52263fcd69c7] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:16:32 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:16:32 - middleware.request_id_middleware - INFO - dispatch:77 - [386d3ef8-b971-4680-bcdb-52263fcd69c7] ← GET /health_check/ - 200 (7.27ms)
+2026-01-21 19:17:01 - middleware.request_id_middleware - INFO - dispatch:64 - [01e910eb-4be0-4f9c-b7c9-26d7d273b708] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:17:01 - middleware.request_id_middleware - INFO - dispatch:77 - [01e910eb-4be0-4f9c-b7c9-26d7d273b708] ← GET /health_check - 307 (1.78ms)
+2026-01-21 19:17:01 - middleware.request_id_middleware - INFO - dispatch:64 - [0eb865c3-055c-491a-99c2-9440ecd60933] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:17:01 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:17:01 - middleware.request_id_middleware - INFO - dispatch:77 - [0eb865c3-055c-491a-99c2-9440ecd60933] ← GET /health_check/ - 200 (5.91ms)
+2026-01-21 19:17:30 - middleware.request_id_middleware - INFO - dispatch:64 - [d79c82b1-5db7-47eb-bc0c-b073e3f150e7] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:17:30 - middleware.request_id_middleware - INFO - dispatch:77 - [d79c82b1-5db7-47eb-bc0c-b073e3f150e7] ← GET /health_check - 307 (2.18ms)
+2026-01-21 19:17:30 - middleware.request_id_middleware - INFO - dispatch:64 - [1f6e7df2-07b8-46bf-83c7-7868be8dc0de] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:17:30 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:17:30 - middleware.request_id_middleware - INFO - dispatch:77 - [1f6e7df2-07b8-46bf-83c7-7868be8dc0de] ← GET /health_check/ - 200 (10.68ms)
+2026-01-21 19:17:59 - middleware.request_id_middleware - INFO - dispatch:64 - [d5551031-993c-4b8d-8299-bc0d936b52e5] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:17:59 - middleware.request_id_middleware - INFO - dispatch:77 - [d5551031-993c-4b8d-8299-bc0d936b52e5] ← GET /health_check - 307 (2.62ms)
+2026-01-21 19:17:59 - middleware.request_id_middleware - INFO - dispatch:64 - [dfb5d1f7-a8f4-4bbe-8fa3-f852583751e5] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:17:59 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:17:59 - middleware.request_id_middleware - INFO - dispatch:77 - [dfb5d1f7-a8f4-4bbe-8fa3-f852583751e5] ← GET /health_check/ - 200 (8.56ms)
+2026-01-21 19:18:28 - middleware.request_id_middleware - INFO - dispatch:64 - [6a8deaf1-c035-4851-8ac1-5b480ad7a87f] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:18:28 - middleware.request_id_middleware - INFO - dispatch:77 - [6a8deaf1-c035-4851-8ac1-5b480ad7a87f] ← GET /health_check - 307 (2.43ms)
+2026-01-21 19:18:28 - middleware.request_id_middleware - INFO - dispatch:64 - [85c35aca-acd5-450f-9b1e-f6f741af3587] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:18:28 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:18:28 - middleware.request_id_middleware - INFO - dispatch:77 - [85c35aca-acd5-450f-9b1e-f6f741af3587] ← GET /health_check/ - 200 (9.41ms)
+2026-01-21 19:18:57 - middleware.request_id_middleware - INFO - dispatch:64 - [08732686-f5e1-4773-ad06-80f12fde5a1e] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:18:57 - middleware.request_id_middleware - INFO - dispatch:77 - [08732686-f5e1-4773-ad06-80f12fde5a1e] ← GET /health_check - 307 (2.01ms)
+2026-01-21 19:18:57 - middleware.request_id_middleware - INFO - dispatch:64 - [ce7207eb-e514-42df-bb32-0bcb784d7b52] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:18:57 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:18:57 - middleware.request_id_middleware - INFO - dispatch:77 - [ce7207eb-e514-42df-bb32-0bcb784d7b52] ← GET /health_check/ - 200 (6.03ms)
+2026-01-21 19:19:26 - middleware.request_id_middleware - INFO - dispatch:64 - [e0410d24-04c7-4e1a-9197-f5046f4240a3] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:19:26 - middleware.request_id_middleware - INFO - dispatch:77 - [e0410d24-04c7-4e1a-9197-f5046f4240a3] ← GET /health_check - 307 (2.75ms)
+2026-01-21 19:19:26 - middleware.request_id_middleware - INFO - dispatch:64 - [7c450a72-9427-4b9f-9c2a-08e893ac9def] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:19:26 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:19:26 - middleware.request_id_middleware - INFO - dispatch:77 - [7c450a72-9427-4b9f-9c2a-08e893ac9def] ← GET /health_check/ - 200 (7.38ms)
+2026-01-21 19:19:55 - middleware.request_id_middleware - INFO - dispatch:64 - [c30768c1-45a1-4333-bbc0-0ec0ac00535c] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:19:55 - middleware.request_id_middleware - INFO - dispatch:77 - [c30768c1-45a1-4333-bbc0-0ec0ac00535c] ← GET /health_check - 307 (2.66ms)
+2026-01-21 19:19:55 - middleware.request_id_middleware - INFO - dispatch:64 - [0ac318c4-a034-4436-90c1-51ac3479bb28] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:19:55 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:19:55 - middleware.request_id_middleware - INFO - dispatch:77 - [0ac318c4-a034-4436-90c1-51ac3479bb28] ← GET /health_check/ - 200 (6.04ms)
+2026-01-21 19:20:23 - middleware.request_id_middleware - INFO - dispatch:64 - [834e3237-c886-4278-afb1-12b112c2ad7d] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:20:23 - middleware.request_id_middleware - INFO - dispatch:77 - [834e3237-c886-4278-afb1-12b112c2ad7d] ← GET /health_check - 307 (1.95ms)
+2026-01-21 19:20:23 - middleware.request_id_middleware - INFO - dispatch:64 - [dc458249-93a4-4ccf-8a88-50f99f096803] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:20:23 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:20:23 - middleware.request_id_middleware - INFO - dispatch:77 - [dc458249-93a4-4ccf-8a88-50f99f096803] ← GET /health_check/ - 200 (5.78ms)
+2026-01-21 19:20:53 - middleware.request_id_middleware - INFO - dispatch:64 - [becd0bb6-ae7e-4cdd-be53-9d31645c4b60] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:20:53 - middleware.request_id_middleware - INFO - dispatch:77 - [becd0bb6-ae7e-4cdd-be53-9d31645c4b60] ← GET /health_check - 307 (2.07ms)
+2026-01-21 19:20:53 - middleware.request_id_middleware - INFO - dispatch:64 - [a77096c9-6074-432a-b1d2-888dc19ef24e] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:20:53 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:20:53 - middleware.request_id_middleware - INFO - dispatch:77 - [a77096c9-6074-432a-b1d2-888dc19ef24e] ← GET /health_check/ - 200 (5.41ms)
+2026-01-21 19:21:00 - __main__ - INFO - lifespan:102 - 👋 Shutting down API...
+2026-01-21 19:21:00 - config.redis_config - INFO - close:103 - Redis connection closed
+2026-01-21 19:21:00 - config.redis_config - INFO - close:107 - Redis connection pool disconnected
+2026-01-21 19:21:00 - __main__ - INFO - lifespan:114 - ✅ Shutdown complete
+2026-01-21 19:21:05 - config.logging_config - INFO - setup_logging:93 - ✅ Logging configured successfully
+2026-01-21 19:21:06 - config.redis_config - INFO - _initialize_client:64 - ✅ Redis connected successfully: redis:6379 (DB: 0)
+2026-01-21 19:21:07 - main - INFO - create_fastapi_app:159 - ✅ CORS enabled
+2026-01-21 19:21:07 - main - INFO - create_fastapi_app:162 - ✅ Request ID middleware enabled
+2026-01-21 19:21:07 - main - INFO - create_fastapi_app:165 - ✅ Rate limiting middleware enabled
+2026-01-21 19:21:07 - middleware.rate_limiter - WARNING - __init__:47 - ⚠️  Rate limiting disabled (Redis not available)
+2026-01-21 19:21:07 - main - INFO - lifespan:90 - 🚀 Starting FastAPI E-commerce API...
+2026-01-21 19:21:07 - main - INFO - create_admin_if_missing:77 - ✅ Admin created successfully: admin@techstore.com
+2026-01-21 19:21:07 - main - INFO - lifespan:96 - ✅ Redis cache available
+2026-01-21 19:21:12 - middleware.request_id_middleware - INFO - dispatch:64 - [eff8c83e-5d10-42c3-a1d2-d8c8f7f888b2] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:21:12 - middleware.request_id_middleware - INFO - dispatch:77 - [eff8c83e-5d10-42c3-a1d2-d8c8f7f888b2] ← GET /health_check - 307 (1.77ms)
+2026-01-21 19:21:12 - middleware.request_id_middleware - INFO - dispatch:64 - [6266194b-8a70-430c-90ef-72d36debe109] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:21:12 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:21:12 - middleware.request_id_middleware - INFO - dispatch:77 - [6266194b-8a70-430c-90ef-72d36debe109] ← GET /health_check/ - 200 (6.91ms)
+2026-01-21 19:21:41 - middleware.request_id_middleware - INFO - dispatch:64 - [59a6f8f6-e2ca-4e29-83f0-ac3415faf400] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:21:41 - middleware.request_id_middleware - INFO - dispatch:77 - [59a6f8f6-e2ca-4e29-83f0-ac3415faf400] ← GET /health_check - 307 (1.77ms)
+2026-01-21 19:21:41 - middleware.request_id_middleware - INFO - dispatch:64 - [6bd8c998-6891-4c2b-a841-9d35db471dbd] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:21:41 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:21:41 - middleware.request_id_middleware - INFO - dispatch:77 - [6bd8c998-6891-4c2b-a841-9d35db471dbd] ← GET /health_check/ - 200 (5.88ms)
+2026-01-21 19:22:10 - middleware.request_id_middleware - INFO - dispatch:64 - [ce2f8e05-fa44-4106-b00f-17ab73519e9d] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:22:10 - middleware.request_id_middleware - INFO - dispatch:77 - [ce2f8e05-fa44-4106-b00f-17ab73519e9d] ← GET /health_check - 307 (1.61ms)
+2026-01-21 19:22:10 - middleware.request_id_middleware - INFO - dispatch:64 - [d0c286e8-0085-4b90-a412-59283b5ef569] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:22:10 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:22:10 - middleware.request_id_middleware - INFO - dispatch:77 - [d0c286e8-0085-4b90-a412-59283b5ef569] ← GET /health_check/ - 200 (4.85ms)
+2026-01-21 19:22:39 - middleware.request_id_middleware - INFO - dispatch:64 - [89394696-3ce0-4e07-9690-5b31f4a970c0] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:22:39 - middleware.request_id_middleware - INFO - dispatch:77 - [89394696-3ce0-4e07-9690-5b31f4a970c0] ← GET /health_check - 307 (1.2ms)
+2026-01-21 19:22:39 - middleware.request_id_middleware - INFO - dispatch:64 - [65a33d7c-68db-401f-9ba5-224e62441511] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:22:39 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:22:39 - middleware.request_id_middleware - INFO - dispatch:77 - [65a33d7c-68db-401f-9ba5-224e62441511] ← GET /health_check/ - 200 (4.23ms)
+2026-01-21 19:23:07 - middleware.request_id_middleware - INFO - dispatch:64 - [427f2a88-9be1-4abb-8c42-f3dcb7db4eb6] → GET /health_check (client: 127.0.0.1)
+2026-01-21 19:23:07 - middleware.request_id_middleware - INFO - dispatch:77 - [427f2a88-9be1-4abb-8c42-f3dcb7db4eb6] ← GET /health_check - 307 (1.76ms)
+2026-01-21 19:23:07 - middleware.request_id_middleware - INFO - dispatch:64 - [f0b2a7fe-d2b3-4d4e-acbe-4ad48445f1f8] → GET /health_check/ (client: 127.0.0.1)
+2026-01-21 19:23:07 - config.database - INFO - check_connection:92 - Database connection established.
+2026-01-21 19:23:07 - middleware.request_id_middleware - INFO - dispatch:77 - [f0b2a7fe-d2b3-4d4e-acbe-4ad48445f1f8] ← GET /health_check/ - 200 (4.65ms)
